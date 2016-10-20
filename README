@@ -1,3 +1,16 @@
+-------------------------------------------------------------------------------
+2016/10/20    Setup local repository 
+-------------------------------------------------------------------------------
+mkdir yokaRawMon 
+cd yokaRawMon
+git init
+git remote add ILC-TPC-Asia git@github.com:ILC-TPC-Asia/yokaRawMon.git
+git fetch ILC-TPC-Asia
+git checkout ILC-TPC-Asia/master
+git checkout -b dev
+-------------------------------------------------------------------------------
+
+
 0) Preparation of KalTest
 $ cd KalTest
 $ source ./setup
