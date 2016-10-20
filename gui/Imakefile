@@ -1,0 +1,97 @@
+/*----------------------------------------------------------------------*/
+/*  Some macros specific to gui building                                */
+/*----------------------------------------------------------------------*/
+
+ROOTCFLAGS    = $(shell $(ROOTSYS)/bin/root-config --cflags)
+ROOTGLIBS     = $(shell root-config --glibs)
+ARCH          = $(shell root-config --arch)
+OSTYPE        = $(shell uname -s)
+
+ifeq ($(ARCH),macosx)
+CXX           = g++-32 -g -O
+else
+CXX           = $(shell root-config --cxx) -g
+endif
+
+LD            = $(CXX)
+
+ifeq ($(OSTYPE),Darwin)
+CXXFLAGS      = $(BUILDBITS) -pipe -Wall -fsigned-char -fno-common -I. -I../unpacker
+SOFLAGS       = -dynamiclib -flat_namespace -single_module -undefined dynamic_lookup -install_name ./
+LDFLAGS       = $(BUILDBITS) -Xlinker -bind_at_load
+else
+CXXFLAGS      = -pipe -Wall -fsigned-char -fPIC -I. -I../unpacker
+SOFLAGS       = -shared -rdynamic -Wl,-soname,
+endif
+CXXFLAGS     += $(ROOTCFLAGS)
+
+RCINTDEFINES  =
+ifeq ($(shell root-config --cxx),clang++)
+RCINTDEFINES += -D_GNUC_VER=470
+endif
+
+LIBS          = $(ROOTGLIBS)
+
+ObjSuf        = o
+SrcSuf        = cxx
+HdrSuf        = h
+SOEXT         = so
+
+/*----------------------------------------------------------------------*/
+/*  Source files, headers, and objects to build                         */
+/*----------------------------------------------------------------------*/ 
+
+PACKAGENAME   = GEMDisplay
+
+SOLIBNAME     = lib$(PACKAGENAME)
+
+SONAME	      = $(SOLIBNAME).$(SOEXT)
+
+DICTNAME      = $(PACKAGENAME)Dict
+
+
+SRCS          = $(PACKAGENAME).$(SrcSuf) \
+		GEMHist.$(SrcSuf)
+
+HDRS          = $(subst .$(SrcSuf),.$(HdrSuf),$(SRCS)) \
+		LinkDef.h
+
+OBJS          = $(subst .$(SrcSuf),.$(ObjSuf),$(SRCS)) \
+		$(DICTNAME).$(ObjSuf)
+
+DEPENDFILES   = $(filter -I% -D%,$(CXXFLAGS))
+DEPENDFILES  += $(shell cxxdepends)
+
+
+/*----------------------------------------------------------------------*/
+/*  Make targets                                                        */
+/*----------------------------------------------------------------------*/
+
+all:: prod/$(SONAME)
+
+prod/$(SONAME): $(OBJS)
+	$(LD) $(SOFLAGS)$(SONAME) $(OBJS) -o  prod/$(SONAME) $(LIBS) $(LDFLAGS)
+	if [ -f $(DICTNAME)_rdict.pcm ]; then \
+		cp -p -f $(DICTNAME)_rdict.pcm prod; \
+	fi
+clean:: 
+	@rm -f $(OBJS) core *.so *~
+	@rm -f $(DICTNAME).*
+	@(cd prod; rm -f *~)
+
+depend:: $(SRCS) $(HDRS)
+	for i in $(SRCS); do \
+	rmkdepend -a -- $(RCINTDEFINES) $(DEPENDFILES) -- $$i; done
+
+distclean:: clean
+	@rm -f $(OBJS) core *.~ *.o  Makefile *.pcm
+	@(cd prod; rm -f core *.so *.d *.root *.pcm)
+
+$(DICTNAME).$(SrcSuf): $(HDRS) LinkDef.h
+	@echo "Generating dictionary ..."
+	rootcint -f $(DICTNAME).$(SrcSuf) -c $(RCINTDEFINES) -I$(ROOTSYS)/include $(HDRS)
+
+.SUFFIXES: .$(SrcSuf)
+
+.$(SrcSuf).$(ObjSuf):
+	$(CXX) $(CXXFLAGS) -c $<
