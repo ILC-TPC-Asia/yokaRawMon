@@ -1,13 +1,26 @@
 -------------------------------------------------------------------------------
-2016/10/20    Setup local repository 
+2016/10/26 (Git instruction updated)   
+2016/10/20 (Git instruction original)   
 -------------------------------------------------------------------------------
-mkdir yokaRawMon 
-cd yokaRawMon
-git init
-git remote add ILC-TPC-Asia git@github.com:ILC-TPC-Asia/yokaRawMon.git
-git fetch ILC-TPC-Asia
-git checkout ILC-TPC-Asia/master
-git checkout -b dev
+1) Setup local repository (For users who do not need to upload his/her codes.)
+-------------------------------------------------------------------------------
+$ cd <your_working_directory>
+$ git init
+$ git clone git://github.com/ILC-TPC-Asia/yokaRawMonNeo.git
+$ cd yokaRawMonNeo
+-------------------------------------------------------------------------------
+2) Setup local repository (For developers)
+-------------------------------------------------------------------------------
+$ cd <your_working_directory>
+$ git init
+$ git clone https://github.com/ILC-TPC-Asia/yokaRawMonNeo.git
+$ cd yokaRawMonNeo
+$ git checkout -b dev
+
+To upload source codes (In yokaRawMonNeo directory):
+$ git add <modified_file_names>
+$ git commit -m "WRITE COMMENTS HERE."
+$ git push dev:master 
 -------------------------------------------------------------------------------
 
 
