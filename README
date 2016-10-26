@@ -20,7 +20,7 @@ $ git checkout -b dev
 To upload source codes (In yokaRawMonNeo directory):
 $ git add <modified_file_names>
 $ git commit -m "WRITE COMMENTS HERE."
-$ git push dev:master 
+$ git push origin dev:master 
 -------------------------------------------------------------------------------
 
 
