@@ -23,7 +23,7 @@ $ git commit -m "WRITE COMMENTS HERE."
 
 $ git push myrepo dev:master 
 -------------------------------------------------------------------------------
-Find more details on Git on other references.
+Find more details on Git in other references.
 
 
 0) Preparation of KalTest
