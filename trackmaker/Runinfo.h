@@ -116,12 +116,12 @@ private:
     kDlength[19611] = 25; //temporary
     kDlength[19616] = 10; //temporary
    
-    kDlength[19636] = 23.5; //temporary
-    kDlength[19637] = 28.5; //temporary
-    kDlength[19638] = 33.5; //temporary
-    kDlength[19639] = 38.5; //temporary
-    kDlength[19640] = 43.5; //temporary
-    kDlength[19641] = 48.5; //temporary
+    kDlength[19636] = 27.5; //temporary
+    kDlength[19637] = 32.5; //temporary
+    kDlength[19638] = 37.5; //temporary
+    kDlength[19639] = 42.5; //temporary
+    kDlength[19640] = 47.5; //temporary
+    kDlength[19641] = 52.5; //temporary
     kDlength[19643] = 55; //temporary
 
     kBfield[7049] = 1;
