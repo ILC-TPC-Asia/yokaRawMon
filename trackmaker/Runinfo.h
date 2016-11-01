@@ -129,6 +129,13 @@ private:
     kDlength[19647] = 20.5; //temporary
     kDlength[19648] = 18.5; //temporary
     kDlength[19649] = 16.5; //temporary
+    kDlength[19651] = 52.5; //temporary
+    kDlength[19652] = 57.5; //temporary
+    kDlength[19653] = 57.5; //temporary
+    kDlength[19654] = 52.5; //temporary
+    kDlength[19655] = 62.5; //temporary
+    kDlength[19656] = 67.5; //temporary
+    kDlength[19657] = 72.5; //temporary
 
     kBfield[7049] = 1;
     kBfield[7046] = 1;
@@ -209,6 +216,20 @@ private:
     kBfield[19640] = 1;
     kBfield[19641] = 1;
     kBfield[19643] = 1;
+    kBfield[19644] = 1;
+    kBfield[19645] = 1;
+    kBfield[19646] = 1;
+    kBfield[19647] = 1;
+    kBfield[19648] = 1;
+    kBfield[19649] = 1;
+    kBfield[19650] = 1;
+    kBfield[19651] = 1;
+    kBfield[19652] = 1;
+    kBfield[19653] = 1;
+    kBfield[19654] = 1;
+    kBfield[19655] = 1;
+    kBfield[19656] = 1;
+    kBfield[19657] = 1;
   }
 
 private:
