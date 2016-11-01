@@ -123,6 +123,12 @@ private:
     kDlength[19640] = 47.5; //temporary
     kDlength[19641] = 52.5; //temporary
     kDlength[19643] = 55; //temporary
+    kDlength[19644] = 32.5; //temporary
+    kDlength[19645] = 27.5; //temporary
+    kDlength[19646] = 22.5; //temporary
+    kDlength[19647] = 20.5; //temporary
+    kDlength[19648] = 18.5; //temporary
+    kDlength[19649] = 16.5; //temporary
 
     kBfield[7049] = 1;
     kBfield[7046] = 1;
