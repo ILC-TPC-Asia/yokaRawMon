@@ -18,4 +18,6 @@
 #./unpacker --events --reversed --format 0 --mapfile=map/channelmap_090324.txt --infile $1
 #./unpacker --events --reversed --format 1 --mapfile=map/channelmap_20090713.txt --infile $1
 #./unpacker --events --reversed --format 1 --mapfile=map/channelmap_20100912.txt --infile $1
-./unpacker --events --reversed --format 1 --mapfile=map/channelmap_20121207.txt --infile $1
+#./unpacker --events --reversed --format 1 --mapfile=map/channelmap_20121207.txt --infile $1
+#./unpacker --events --reversed --format 1 --mapfile=map/ChannelMap_20161030.txt --infile $1
+./unpacker --events --reversed --format 1 --mapfile=map/ChannelMap_20161101.txt --infile $1
