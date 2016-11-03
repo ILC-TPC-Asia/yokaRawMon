@@ -152,6 +152,45 @@ private:
     kDlength[19678] = 2.6;  
     kDlength[19680] = 0;  
 
+    kDlength[19687] = 2.5;  
+    kDlength[19692] = 5.0;  
+    kDlength[19693] = 10;  
+    kDlength[19696] = 15;  
+    kDlength[19697] = 20;  
+    kDlength[19698] = 25;  
+    kDlength[19699] = 30;  
+    kDlength[19700] = 35;  
+    kDlength[19701] = 40;  
+    kDlength[19702] = 45;  
+    kDlength[19703] = 50;  
+    kDlength[19704] = 55;
+
+    kDlength[19717] = 2.5;  
+    kDlength[19718] = 5;  
+    kDlength[19719] = 10;  
+    kDlength[19720] = 15;  
+    kDlength[19721] = 20;  
+    kDlength[19722] = 25;  
+    kDlength[19723] = 30;  
+    kDlength[19724] = 35;  
+    kDlength[19725] = 40;  
+    kDlength[19726] = 45;  
+    kDlength[19727] = 50;  
+    kDlength[19728] = 55;  
+
+    kDlength[19732] = 55;  
+    kDlength[19733] = 50;  
+    kDlength[19734] = 45;  
+    kDlength[19735] = 40;  
+    kDlength[19736] = 35;  
+    kDlength[19737] = 30;  
+    kDlength[19738] = 25;  
+    kDlength[19739] = 20;  
+    kDlength[19740] = 15;  
+    kDlength[19741] = 10;  
+    kDlength[19742] = 5;  
+    kDlength[19743] = 2.5;  
+
     kBfield[7049] = 1;
     kBfield[7046] = 1;
     kBfield[7051] = 1;
@@ -261,6 +300,44 @@ private:
     kBfield[19678] = 1;
     kBfield[19679] = 1;
 
+    kBfield[19687] = 0;
+    kBfield[19692] = 0;
+    kBfield[19693] = 0;
+    kBfield[19696] = 0;
+    kBfield[19697] = 0;
+    kBfield[19698] = 0;
+    kBfield[19699] = 0;
+    kBfield[19700] = 0;
+    kBfield[19701] = 0;
+    kBfield[19702] = 0;
+    kBfield[19703] = 0;
+    kBfield[19704] = 0;
+
+    kBfield[19717] = 1;
+    kBfield[19718] = 1;
+    kBfield[19719] = 1;
+    kBfield[19720] = 1;
+    kBfield[19721] = 1;
+    kBfield[19722] = 1;
+    kBfield[19723] = 1;
+    kBfield[19724] = 1;
+    kBfield[19725] = 1;
+    kBfield[19726] = 1;
+    kBfield[19727] = 1;
+    kBfield[19728] = 1;
+
+    kBfield[19732] = 1;
+    kBfield[19733] = 1;
+    kBfield[19734] = 1;
+    kBfield[19735] = 1;
+    kBfield[19736] = 1;
+    kBfield[19737] = 1;
+    kBfield[19738] = 1;
+    kBfield[19739] = 1;
+    kBfield[19740] = 1;
+    kBfield[19741] = 1;
+    kBfield[19742] = 1;
+    kBfield[19743] = 1;
   }
 
 private:
