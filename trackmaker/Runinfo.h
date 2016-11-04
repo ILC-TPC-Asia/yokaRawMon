@@ -8,10 +8,12 @@ public:
   {
     if (kDlength) delete [] kDlength;
     if (kBfield)  delete [] kBfield;
+    if (kAngle)  delete [] kAngle;
   }
 
   inline double GetDlength(int run) const { return run < kNruns ? kDlength[run] : 1.e10; } 
   inline int GetBfield (int run) const { return run < kNruns ? kBfield [run] : 1.e10; } 
+  inline int GetAngle (int run) const { return run < kNruns ? kANgle [run] : 1.e10; } 
   inline double GetDLOffset(int run) const { return kDLoff; }
 
   static Runinfo *GetInstancePtr()
@@ -25,14 +27,16 @@ private:
   Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kDLoff(2.8)
 #else
   //Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kDLoff(-0.6)
-  Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kDLoff(-1.0)
+  Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kAngle(0) ,kDLoff(-1.0)
 #endif
   {
     kDlength = new double[kNruns];
     kBfield  = new int[kNruns];
+    kAngle  = new int[kNruns];
     for (Int_t i=0; i<kNruns; i++) {
       kDlength[i] = 0;
       kBfield [i] = 0;
+      kAngle [i] = 0;
     }
     kDlength[6953] = 10;
     kDlength[6957] = 15;
@@ -191,6 +195,19 @@ private:
     kDlength[19742] = 5;  
     kDlength[19743] = 2.5;  
 
+    kDlength[19746] = 2.5;  
+    kDlength[19747] = 5;  
+    kDlength[19748] = 10;  
+    kDlength[19749] = 15;  
+    kDlength[19750] = 20;  
+    kDlength[19752] = 25;  
+    kDlength[19753] = 30;  
+    kDlength[19754] = 35;  
+    kDlength[19755] = 40;  
+    kDlength[19756] = 45;  
+    kDlength[19757] = 50;  
+    kDlength[19758] = 55;  
+
     kBfield[7049] = 1;
     kBfield[7046] = 1;
     kBfield[7051] = 1;
@@ -338,12 +355,65 @@ private:
     kBfield[19741] = 1;
     kBfield[19742] = 1;
     kBfield[19743] = 1;
+
+    kBfield[19746] = 1;
+    kBfield[19747] = 1;
+    kBfield[19748] = 1;
+    kBfield[19749] = 1;
+    kBfield[19750] = 1;
+    kBfield[19752] = 1;
+    kBfield[19753] = 1;
+    kBfield[19754] = 1;
+    kBfield[19755] = 1;
+    kBfield[19756] = 1;
+    kBfield[19757] = 1;
+    kBfield[19758] = 1;
+
+    kAngle[19717] = 0;
+    kAngle[19718] = 0;
+    kAngle[19719] = 0;
+    kAngle[19720] = 0;
+    kAngle[19721] = 0;
+    kAngle[19722] = 0;
+    kAngle[19723] = 0;
+    kAngle[19724] = 0;
+    kAngle[19725] = 0;
+    kAngle[19726] = 0;
+    kAngle[19727] = 0;
+    kAngle[19728] = 0;
+    
+    kAngle[19743] = 10;
+    kAngle[19742] = 10;
+    kAngle[19741] = 10;
+    kAngle[19739] = 10;
+    kAngle[19738] = 10;
+    kAngle[19737] = 10;
+    kAngle[19736] = 10;
+    kAngle[19735] = 10;
+    kAngle[19734] = 10;
+    kAngle[19733] = 10;
+    kAngle[19732] = 10;
+
+    kAngle[19746] = 20;
+    kAngle[19747] = 20;
+    kAngle[19748] = 20;
+    kAngle[19749] = 20;
+    kAngle[19750] = 20;
+    kAngle[19752] = 20;
+    kAngle[19753] = 20;
+    kAngle[19754] = 20;
+    kAngle[19755] = 20;
+    kAngle[19756] = 20;
+    kAngle[19757] = 20;
+    kAngle[19758] = 20;
+
   }
 
 private:
   const  int       kNruns;
          double   *kDlength;
          int      *kBfield;
+         int      *kAngle;
   const  double    kDLoff;
   static Runinfo  *gInstancePtr;
 };
