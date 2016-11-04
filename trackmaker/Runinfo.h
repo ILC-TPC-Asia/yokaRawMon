@@ -13,7 +13,7 @@ public:
 
   inline double GetDlength(int run) const { return run < kNruns ? kDlength[run] : 1.e10; } 
   inline int GetBfield (int run) const { return run < kNruns ? kBfield [run] : 1.e10; } 
-  inline int GetAngle (int run) const { return run < kNruns ? kANgle [run] : 1.e10; } 
+  inline int GetAngle (int run) const { return run < kNruns ? kAngle [run] : 1.e10; } 
   inline double GetDLOffset(int run) const { return kDLoff; }
 
   static Runinfo *GetInstancePtr()
@@ -28,6 +28,7 @@ private:
 #else
   //Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kDLoff(-0.6)
   Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kAngle(0) ,kDLoff(-1.0)
+  //Runinfo() : kNruns(100000), kDlength(0), kBfield(0) ,kDLoff(-1.0)
 #endif
   {
     kDlength = new double[kNruns];
