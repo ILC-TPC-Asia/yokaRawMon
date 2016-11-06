@@ -209,6 +209,76 @@ private:
     kDlength[19757] = 50;  
     kDlength[19758] = 55;  
 
+    kDlength[19751] = 20;
+
+    kDlength[19761] = 55;  
+    kDlength[19762] = 50;  
+    kDlength[19763] = 45;  
+    kDlength[19764] = 40;  
+    kDlength[19765] = 35;  
+    kDlength[19766] = 30;  
+    kDlength[19767] = 25;  
+    kDlength[19768] = 20;  
+    kDlength[19769] = 15;  
+    kDlength[19770] = 10;  
+    kDlength[19771] = 5;  
+    kDlength[19772] = 2.5; 
+
+    kDlength[19782] = 2.5; 
+    kDlength[19783] = 5; 
+    kDlength[19784] = 10; 
+    kDlength[19786] = 15; 
+    kDlength[19787] = 20; 
+    kDlength[19788] = 25; 
+    kDlength[19789] = 30; 
+    kDlength[19790] = 35; 
+    kDlength[19791] = 40; 
+    kDlength[19792] = 45; 
+    kDlength[19793] = 50; 
+    kDlength[19794] = 55; 
+
+    kDlength[19785] = 10;//Vcath=350 V,Vanode=315 V 
+
+    kDlength[19800] = 50; 
+    kDlength[19801] = 45; 
+    kDlength[19802] = 40; 
+    kDlength[19803] = 35; 
+    kDlength[19804] = 30; 
+    kDlength[19805] = 25; 
+    kDlength[19806] = 20; 
+    kDlength[19807] = 15; 
+    kDlength[19808] = 10; 
+    kDlength[19809] = 5; 
+    kDlength[19810] = 2.5; 
+   
+    kDlength[19816] = 2.5; 
+    kDlength[19817] = 5; 
+    kDlength[19818] = 10; 
+    kDlength[19819] = 15; 
+    kDlength[19820] = 20; 
+    kDlength[19821] = 25; 
+    kDlength[19822] = 30; 
+    kDlength[19824] = 35; 
+    kDlength[19825] = 40; 
+    kDlength[19826] = 45; 
+    kDlength[19827] = 50; 
+    kDlength[19828] = 55; 
+
+    kDlength[19823] = 35; //Vcath=350 V,Vanode=315 V 
+
+    kDlength[19830] = 55;  
+    kDlength[19831] = 50;  
+    kDlength[19832] = 45;  
+    kDlength[19833] = 40;  
+    kDlength[19834] = 35;  
+    kDlength[19835] = 30;  
+    kDlength[19836] = 25;  
+    kDlength[19837] = 20;  
+    kDlength[19838] = 15;  
+    kDlength[19839] = 10;  
+    kDlength[19840] = 5;  
+    kDlength[19841] = 2.5;    
+
     kBfield[7049] = 1;
     kBfield[7046] = 1;
     kBfield[7051] = 1;
@@ -370,6 +440,102 @@ private:
     kBfield[19757] = 1;
     kBfield[19758] = 1;
 
+    kBfield[19732] = 1;  
+    kBfield[19733] = 1;  
+    kBfield[19734] = 1;  
+    kBfield[19735] = 1;  
+    kBfield[19736] = 1;  
+    kBfield[19737] = 1;  
+    kBfield[19738] = 1;  
+    kBfield[19739] = 1;  
+    kBfield[19740] = 1;  
+    kBfield[19741] = 1;  
+    kBfield[19742] = 1;  
+    kBfield[19743] = 1;  
+
+    kBfield[19746] = 1;  
+    kBfield[19747] = 1;  
+    kBfield[19748] = 1;  
+    kBfield[19749] = 1;  
+    kBfield[19750] = 1;  
+    kBfield[19752] = 1;  
+    kBfield[19753] = 1;  
+    kBfield[19754] = 1;  
+    kBfield[19755] = 1;  
+    kBfield[19756] = 1;  
+    kBfield[19757] = 1;  
+    kBfield[19758] = 1;  
+
+    kBfield[19751] = 1;
+
+    kBfield[19761] = 1;  
+    kBfield[19762] = 1;  
+    kBfield[19763] = 1;  
+    kBfield[19764] = 1;  
+    kBfield[19765] = 1;  
+    kBfield[19766] = 1;  
+    kBfield[19767] = 1;  
+    kBfield[19768] = 1;  
+    kBfield[19769] = 1;  
+    kBfield[19770] = 1;  
+    kBfield[19771] = 1;  
+    kBfield[19772] = 1; 
+
+    kBfield[19782] = 1; 
+    kBfield[19783] = 1; 
+    kBfield[19784] = 1; 
+    kBfield[19786] = 1; 
+    kBfield[19787] = 1; 
+    kBfield[19788] = 1; 
+    kBfield[19789] = 1; 
+    kBfield[19790] = 1; 
+    kBfield[19791] = 1; 
+    kBfield[19792] = 1; 
+    kBfield[19793] = 1; 
+    kBfield[19794] = 1; 
+
+    kBfield[19785] = 1;//Vcath=350 V,Vanode=315 V 
+
+    kBfield[19800] = 0; 
+    kBfield[19801] = 0; 
+    kBfield[19802] = 0; 
+    kBfield[19803] = 0; 
+    kBfield[19804] = 0; 
+    kBfield[19805] = 0; 
+    kBfield[19806] = 0; 
+    kBfield[19807] = 0; 
+    kBfield[19808] = 0; 
+    kBfield[19809] = 0; 
+    kBfield[19810] = 0; 
+   
+    kBfield[19816] = 0; 
+    kBfield[19817] = 0; 
+    kBfield[19818] = 0; 
+    kBfield[19819] = 0; 
+    kBfield[19820] = 0; 
+    kBfield[19821] = 0; 
+    kBfield[19822] = 0; 
+    kBfield[19824] = 0; 
+    kBfield[19825] = 0; 
+    kBfield[19826] = 0; 
+    kBfield[19827] = 0; 
+    kBfield[19828] = 0; 
+
+    kBfield[19823] = 0; //Vcath=350 V,Vanode=315 V 
+
+    kBfield[19830] = 0;  
+    kBfield[19831] = 0;  
+    kBfield[19832] = 0; 
+    kBfield[19833] = 0;  
+    kBfield[19834] = 0;  
+    kBfield[19835] = 0;  
+    kBfield[19836] = 0;  
+    kBfield[19837] = 0;  
+    kBfield[19838] = 0;  
+    kBfield[19839] = 0;  
+    kBfield[19840] = 0;  
+    kBfield[19841] = 0;    
+
     kAngle[19717] = 0;
     kAngle[19718] = 0;
     kAngle[19719] = 0;
@@ -407,6 +573,101 @@ private:
     kAngle[19756] = 20;
     kAngle[19757] = 20;
     kAngle[19758] = 20;
+
+    kAngle[19732] = 10;  
+    kAngle[19733] = 10;  
+    kAngle[19734] = 10;  
+    kAngle[19735] = 10;  
+    kAngle[19736] = 10;  
+    kAngle[19737] = 10;  
+    kAngle[19738] = 10;  
+    kAngle[19739] = 10;  
+    kAngle[19740] = 10;  
+    kAngle[19741] = 10;  
+    kAngle[19742] = 10;  
+    kAngle[19743] = 10;  
+
+    kAngle[19746] = 20;  
+    kAngle[19747] = 20;  
+    kAngle[19748] = 20;  
+    kAngle[19749] = 20;  
+    kAngle[19750] = 20;  
+    kAngle[19752] = 20;  
+    kAngle[19753] = 20;  
+    kAngle[19754] = 20;  
+    kAngle[19755] = 20;  
+    kAngle[19756] = 20;  
+    kAngle[19757] = 20;  
+    kAngle[19758] = 20;  
+
+    kAngle[19751] = 20;
+
+    kAngle[19761] = 20;  
+    kAngle[19762] = 20;  
+    kAngle[19763] = 20;  
+    kAngle[19764] = 20;  
+    kAngle[19765] = 20;  
+    kAngle[19766] = 20;  
+    kAngle[19767] = 20;  
+    kAngle[19768] = 20;  
+    kAngle[19769] = 20;  
+    kAngle[19770] = 20;  
+    kAngle[19771] = 20;  
+    kAngle[19772] = 20; 
+
+    kAngle[19782] = 20; 
+    kAngle[19783] = 20; 
+    kAngle[19784] = 20; 
+    kAngle[19786] = 20; 
+    kAngle[19787] = 20; 
+    kAngle[19788] = 20; 
+    kAngle[19789] = 20; 
+    kAngle[19790] = 20; 
+    kAngle[19791] = 20; 
+    kAngle[19792] = 20; 
+    kAngle[19793] = 20; 
+    kAngle[19794] = 20; 
+
+    kAngle[19785] = 20;//Vcath=350 V,Vanode=315 V 
+
+    kAngle[19800] = 10; 
+    kAngle[19801] = 10; 
+    kAngle[19802] = 10; 
+    kAngle[19803] = 10; 
+    kAngle[19804] = 10; 
+    kAngle[19805] = 10; 
+    kAngle[19806] = 10; 
+    kAngle[19807] = 10; 
+    kAngle[19808] = 10; 
+    kAngle[19809] = 10; 
+    kAngle[19810] = 10; 
+
+    kAngle[19816] = 1; 
+    kAngle[19817] = 1; 
+    kAngle[19818] = 1; 
+    kAngle[19819] = 1; 
+    kAngle[19820] = 1; 
+    kAngle[19821] = 1; 
+    kAngle[19822] = 1; 
+    kAngle[19823] = 1; 
+    kAngle[19824] = 1; 
+    kAngle[19825] = 1; 
+    kAngle[19826] = 1; 
+    kAngle[19827] = 1; 
+    kAngle[19828] = 1; 
+
+    kAngle[19830] = 20; 
+    kAngle[19831] = 20; 
+    kAngle[19832] = 20; 
+    kAngle[19833] = 20; 
+    kAngle[19834] = 20; 
+    kAngle[19835] = 20; 
+    kAngle[19836] = 20; 
+    kAngle[19837] = 20; 
+    kAngle[19838] = 20; 
+    kAngle[19839] = 20; 
+    kAngle[19840] = 20; 
+    kAngle[19841] = 20; 
 
   }
 
