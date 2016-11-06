@@ -481,20 +481,20 @@ private:
     kBfield[19771] = 1;  
     kBfield[19772] = 1; 
 
-    kBfield[19782] = 1; 
-    kBfield[19783] = 1; 
-    kBfield[19784] = 1; 
-    kBfield[19786] = 1; 
-    kBfield[19787] = 1; 
-    kBfield[19788] = 1; 
-    kBfield[19789] = 1; 
-    kBfield[19790] = 1; 
-    kBfield[19791] = 1; 
-    kBfield[19792] = 1; 
-    kBfield[19793] = 1; 
-    kBfield[19794] = 1; 
+    kBfield[19782] = 0; 
+    kBfield[19783] = 0; 
+    kBfield[19784] = 0; 
+    kBfield[19786] = 0; 
+    kBfield[19787] = 0; 
+    kBfield[19788] = 0; 
+    kBfield[19789] = 0; 
+    kBfield[19790] = 0; 
+    kBfield[19791] = 0; 
+    kBfield[19792] = 0; 
+    kBfield[19793] = 0; 
+    kBfield[19794] = 0; 
 
-    kBfield[19785] = 1;//Vcath=350 V,Vanode=315 V 
+    kBfield[19785] = 0;//Vcath=350 V,Vanode=315 V 
 
     kBfield[19800] = 0; 
     kBfield[19801] = 0; 
