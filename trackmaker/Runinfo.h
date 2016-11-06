@@ -279,6 +279,48 @@ private:
     kDlength[19840] = 5;  
     kDlength[19841] = 2.5;    
 
+    kDlength[19848] = 25;  
+    kDlength[19849] = 25;  
+    kDlength[19850] = 25;  
+    kDlength[19851] = 25;  
+    kDlength[19852] = 15;  
+    kDlength[19853] = 15;  
+    kDlength[19854] = 35;  
+    kDlength[19855] = 35;  
+   
+    kDlength[19860] = 35;  
+    kDlength[19861] = 25;  
+    kDlength[19862] = 20;  
+    kDlength[19863] = 15;    
+    kDlength[19864] = 10;    
+    kDlength[19865] = 5;    
+    kDlength[19866] = 2.5;    
+    kDlength[19867] = 1.25;    
+    kDlength[19868] = 0.75;    
+    kDlength[19869] = 7.5;    
+    kDlength[19870] = 12.5;    
+    kDlength[19871] = 30;    
+    kDlength[19872] = 40;    
+    kDlength[19873] = 50;    
+    kDlength[19874] = 55;    
+    kDlength[19875] = 55;       
+
+    kDlength[19881] = 55;    
+    kDlength[19882] = 50;    
+    kDlength[19883] = 45;    
+    kDlength[19884] = 40;    
+    kDlength[19885] = 35;    
+    kDlength[19886] = 30;    
+    kDlength[19887] = 25;    
+    kDlength[19888] = 20;    
+    kDlength[19889] = 15;    
+    kDlength[19890] = 12.5;    
+    kDlength[19891] = 10;    
+    kDlength[19892] = 7.5;    
+    kDlength[19893] = 5;    
+    kDlength[19894] = 2.5;    
+    kDlength[19895] = 1.25;    
+
     kBfield[7049] = 1;
     kBfield[7046] = 1;
     kBfield[7051] = 1;
@@ -535,6 +577,47 @@ private:
     kBfield[19839] = 0;  
     kBfield[19840] = 0;  
     kBfield[19841] = 0;    
+
+    kBfield[19848] = 0;  
+    kBfield[19849] = 0;  
+    kBfield[19850] = 0;  
+    kBfield[19851] = 0;  
+    kBfield[19852] = 0;  
+    kBfield[19853] = 0;  
+    kBfield[19854] = 0;  
+    kBfield[19855] = 0;  
+   
+    kBfield[19860] = 1;  
+    kBfield[19861] = 1;  
+    kBfield[19862] = 1;  
+    kBfield[19863] = 1;    
+    kBfield[19864] = 1;    
+    kBfield[19865] = 1;    
+    kBfield[19866] = 1;    
+    kBfield[19867] = 1;    
+    kBfield[19868] = 1;    
+    kBfield[19869] = 1;    
+    kBfield[19870] = 1;    
+    kBfield[19871] = 1;    
+    kBfield[19872] = 1;    
+    kBfield[19873] = 1;    
+    kBfield[19874] = 1;    
+    kBfield[19875] = 1;       
+
+    kBfield[19881] = 1;    
+    kBfield[19882] = 1;    
+    kBfield[19883] = 1;    
+    kBfield[19884] = 1;    
+    kBfield[19885] = 1;    
+    kBfield[19886] = 1;    
+    kBfield[19887] = 1;    
+    kBfield[19888] = 1;    
+    kBfield[19889] = 1;    
+    kBfield[19890] = 1;    
+    kBfield[19891] = 1;    
+    kBfield[19892] = 1;    
+    kBfield[19893] = 1;    
+    kBfield[19894] = 1;    
 
     kAngle[19717] = 0;
     kAngle[19718] = 0;
