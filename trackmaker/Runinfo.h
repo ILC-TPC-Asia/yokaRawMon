@@ -100,7 +100,7 @@ private:
     kDlength[18549] = 29;
     kDlength[18548] = 39;
     kDlength[18547] = 49;
-
+    
     kDlength[18609] = 2.5;
     kDlength[18606] = 5;
     kDlength[18605] = 7.5;
@@ -112,6 +112,30 @@ private:
     kDlength[18594] = 30;
     kDlength[18592] = 40;
     kDlength[18591] = 50;
+
+    kDlength[19611] = 25; //temporary
+    kDlength[19616] = 10; //temporary
+   
+    kDlength[19636] = 12.5; //temporary
+    kDlength[19637] = 17.5; //temporary
+    kDlength[19638] = 22.5; //temporary
+    kDlength[19639] = 27.5; //temporary
+    kDlength[19640] = 32.5; //temporary
+    kDlength[19641] = 37.5; //temporary
+    kDlength[19643] = 40; //temporary
+    kDlength[19644] = 17.5; //temporary
+    kDlength[19645] = 12.5; //temporary
+    kDlength[19646] = 7.5; //temporary
+    kDlength[19647] = 5.5; //temporary
+    kDlength[19648] = 3.5; //temporary
+    kDlength[19649] = 1.5; //temporary
+    kDlength[19651] = 37.5; //temporary
+    kDlength[19652] = 42.5; //temporary
+    kDlength[19653] = 42.5; //temporary
+    kDlength[19654] = 37.5; //temporary
+    kDlength[19655] = 47.5; //temporary
+    kDlength[19656] = 52.5; //temporary
+    kDlength[19657] = 57.5; //temporary
 
     kBfield[7049] = 1;
     kBfield[7046] = 1;
@@ -181,6 +205,31 @@ private:
     kBfield[18594] = 1;
     kBfield[18592] = 1;
     kBfield[18591] = 1;
+    
+    kBfield[19611] = 0;
+    kBfield[19616] = 0;
+   
+    kBfield[19636] = 1;
+    kBfield[19637] = 1;
+    kBfield[19638] = 1;
+    kBfield[19639] = 1;
+    kBfield[19640] = 1;
+    kBfield[19641] = 1;
+    kBfield[19643] = 1;
+    kBfield[19644] = 1;
+    kBfield[19645] = 1;
+    kBfield[19646] = 1;
+    kBfield[19647] = 1;
+    kBfield[19648] = 1;
+    kBfield[19649] = 1;
+    kBfield[19650] = 1;
+    kBfield[19651] = 1;
+    kBfield[19652] = 1;
+    kBfield[19653] = 1;
+    kBfield[19654] = 1;
+    kBfield[19655] = 1;
+    kBfield[19656] = 1;
+    kBfield[19657] = 1;
   }
 
 private:
