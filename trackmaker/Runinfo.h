@@ -8,12 +8,12 @@ public:
   {
     if (kDlength) delete [] kDlength;
     if (kBfield)  delete [] kBfield;
-    if (kAngle)  delete [] kAngle;
+    if (kAnglephi)  delete [] kAnglephi;
   }
 
   inline double GetDlength(int run) const { return run < kNruns ? kDlength[run] : 1.e10; } 
   inline int GetBfield (int run) const { return run < kNruns ? kBfield [run] : 1.e10; } 
-  inline int GetAngle (int run) const { return run < kNruns ? kAngle [run] : 1.e10; } 
+  inline int GetAnglephi (int run) const { return run < kNruns ? kAnglephi [run] : 1.e10; } 
   inline double GetDLOffset(int run) const { return kDLoff; }
 
   static Runinfo *GetInstancePtr()
@@ -24,20 +24,20 @@ public:
 
 private:
 #if 0
-  Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kDLoff(2.8)
+  Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kAnglephi(0), kDLoff(2.8)
 #else
   //Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kDLoff(-0.6)
-  Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kAngle(0) ,kDLoff(-1.0)
+  Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kAnglephi(0), kDLoff(-1.0)
   //Runinfo() : kNruns(100000), kDlength(0), kBfield(0) ,kDLoff(-1.0)
 #endif
   {
     kDlength = new double[kNruns];
     kBfield  = new int[kNruns];
-    kAngle  = new int[kNruns];
+    kAnglephi  = new int[kNruns];
     for (Int_t i=0; i<kNruns; i++) {
       kDlength[i] = 0;
       kBfield [i] = 0;
-      kAngle [i] = 0;
+      kAnglephi [i] = 0;
     }
     kDlength[6953] = 10;
     kDlength[6957] = 15;
@@ -619,138 +619,138 @@ private:
     kBfield[19893] = 1;    
     kBfield[19894] = 1;    
 
-    kAngle[19717] = 0;
-    kAngle[19718] = 0;
-    kAngle[19719] = 0;
-    kAngle[19720] = 0;
-    kAngle[19721] = 0;
-    kAngle[19722] = 0;
-    kAngle[19723] = 0;
-    kAngle[19724] = 0;
-    kAngle[19725] = 0;
-    kAngle[19726] = 0;
-    kAngle[19727] = 0;
-    kAngle[19728] = 0;
+    kAnglephi[19717] = 0;
+    kAnglephi[19718] = 0;
+    kAnglephi[19719] = 0;
+    kAnglephi[19720] = 0;
+    kAnglephi[19721] = 0;
+    kAnglephi[19722] = 0;
+    kAnglephi[19723] = 0;
+    kAnglephi[19724] = 0;
+    kAnglephi[19725] = 0;
+    kAnglephi[19726] = 0;
+    kAnglephi[19727] = 0;
+    kAnglephi[19728] = 0;
     
-    kAngle[19743] = 10;
-    kAngle[19742] = 10;
-    kAngle[19741] = 10;
-    kAngle[19739] = 10;
-    kAngle[19738] = 10;
-    kAngle[19737] = 10;
-    kAngle[19736] = 10;
-    kAngle[19735] = 10;
-    kAngle[19734] = 10;
-    kAngle[19733] = 10;
-    kAngle[19732] = 10;
+    kAnglephi[19743] = 10;
+    kAnglephi[19742] = 10;
+    kAnglephi[19741] = 10;
+    kAnglephi[19739] = 10;
+    kAnglephi[19738] = 10;
+    kAnglephi[19737] = 10;
+    kAnglephi[19736] = 10;
+    kAnglephi[19735] = 10;
+    kAnglephi[19734] = 10;
+    kAnglephi[19733] = 10;
+    kAnglephi[19732] = 10;
 
-    kAngle[19746] = 20;
-    kAngle[19747] = 20;
-    kAngle[19748] = 20;
-    kAngle[19749] = 20;
-    kAngle[19750] = 20;
-    kAngle[19752] = 20;
-    kAngle[19753] = 20;
-    kAngle[19754] = 20;
-    kAngle[19755] = 20;
-    kAngle[19756] = 20;
-    kAngle[19757] = 20;
-    kAngle[19758] = 20;
+    kAnglephi[19746] = 20;
+    kAnglephi[19747] = 20;
+    kAnglephi[19748] = 20;
+    kAnglephi[19749] = 20;
+    kAnglephi[19750] = 20;
+    kAnglephi[19752] = 20;
+    kAnglephi[19753] = 20;
+    kAnglephi[19754] = 20;
+    kAnglephi[19755] = 20;
+    kAnglephi[19756] = 20;
+    kAnglephi[19757] = 20;
+    kAnglephi[19758] = 20;
 
-    kAngle[19732] = 10;  
-    kAngle[19733] = 10;  
-    kAngle[19734] = 10;  
-    kAngle[19735] = 10;  
-    kAngle[19736] = 10;  
-    kAngle[19737] = 10;  
-    kAngle[19738] = 10;  
-    kAngle[19739] = 10;  
-    kAngle[19740] = 10;  
-    kAngle[19741] = 10;  
-    kAngle[19742] = 10;  
-    kAngle[19743] = 10;  
+    kAnglephi[19732] = 10;  
+    kAnglephi[19733] = 10;  
+    kAnglephi[19734] = 10;  
+    kAnglephi[19735] = 10;  
+    kAnglephi[19736] = 10;  
+    kAnglephi[19737] = 10;  
+    kAnglephi[19738] = 10;  
+    kAnglephi[19739] = 10;  
+    kAnglephi[19740] = 10;  
+    kAnglephi[19741] = 10;  
+    kAnglephi[19742] = 10;  
+    kAnglephi[19743] = 10;  
 
-    kAngle[19746] = 20;  
-    kAngle[19747] = 20;  
-    kAngle[19748] = 20;  
-    kAngle[19749] = 20;  
-    kAngle[19750] = 20;  
-    kAngle[19752] = 20;  
-    kAngle[19753] = 20;  
-    kAngle[19754] = 20;  
-    kAngle[19755] = 20;  
-    kAngle[19756] = 20;  
-    kAngle[19757] = 20;  
-    kAngle[19758] = 20;  
+    kAnglephi[19746] = 20;  
+    kAnglephi[19747] = 20;  
+    kAnglephi[19748] = 20;  
+    kAnglephi[19749] = 20;  
+    kAnglephi[19750] = 20;  
+    kAnglephi[19752] = 20;  
+    kAnglephi[19753] = 20;  
+    kAnglephi[19754] = 20;  
+    kAnglephi[19755] = 20;  
+    kAnglephi[19756] = 20;  
+    kAnglephi[19757] = 20;  
+    kAnglephi[19758] = 20;  
 
-    kAngle[19751] = 20;
+    kAnglephi[19751] = 20;
 
-    kAngle[19761] = 20;  
-    kAngle[19762] = 20;  
-    kAngle[19763] = 20;  
-    kAngle[19764] = 20;  
-    kAngle[19765] = 20;  
-    kAngle[19766] = 20;  
-    kAngle[19767] = 20;  
-    kAngle[19768] = 20;  
-    kAngle[19769] = 20;  
-    kAngle[19770] = 20;  
-    kAngle[19771] = 20;  
-    kAngle[19772] = 20; 
+    kAnglephi[19761] = 20;  
+    kAnglephi[19762] = 20;  
+    kAnglephi[19763] = 20;  
+    kAnglephi[19764] = 20;  
+    kAnglephi[19765] = 20;  
+    kAnglephi[19766] = 20;  
+    kAnglephi[19767] = 20;  
+    kAnglephi[19768] = 20;  
+    kAnglephi[19769] = 20;  
+    kAnglephi[19770] = 20;  
+    kAnglephi[19771] = 20;  
+    kAnglephi[19772] = 20; 
 
-    kAngle[19782] = 20; 
-    kAngle[19783] = 20; 
-    kAngle[19784] = 20; 
-    kAngle[19786] = 20; 
-    kAngle[19787] = 20; 
-    kAngle[19788] = 20; 
-    kAngle[19789] = 20; 
-    kAngle[19790] = 20; 
-    kAngle[19791] = 20; 
-    kAngle[19792] = 20; 
-    kAngle[19793] = 20; 
-    kAngle[19794] = 20; 
+    kAnglephi[19782] = 20; 
+    kAnglephi[19783] = 20; 
+    kAnglephi[19784] = 20; 
+    kAnglephi[19786] = 20; 
+    kAnglephi[19787] = 20; 
+    kAnglephi[19788] = 20; 
+    kAnglephi[19789] = 20; 
+    kAnglephi[19790] = 20; 
+    kAnglephi[19791] = 20; 
+    kAnglephi[19792] = 20; 
+    kAnglephi[19793] = 20; 
+    kAnglephi[19794] = 20; 
 
-    kAngle[19785] = 20;//Vcath=350 V,Vanode=315 V 
+    kAnglephi[19785] = 20;//Vcath=350 V,Vanode=315 V 
 
-    kAngle[19800] = 10; 
-    kAngle[19801] = 10; 
-    kAngle[19802] = 10; 
-    kAngle[19803] = 10; 
-    kAngle[19804] = 10; 
-    kAngle[19805] = 10; 
-    kAngle[19806] = 10; 
-    kAngle[19807] = 10; 
-    kAngle[19808] = 10; 
-    kAngle[19809] = 10; 
-    kAngle[19810] = 10; 
+    kAnglephi[19800] = 10; 
+    kAnglephi[19801] = 10; 
+    kAnglephi[19802] = 10; 
+    kAnglephi[19803] = 10; 
+    kAnglephi[19804] = 10; 
+    kAnglephi[19805] = 10; 
+    kAnglephi[19806] = 10; 
+    kAnglephi[19807] = 10; 
+    kAnglephi[19808] = 10; 
+    kAnglephi[19809] = 10; 
+    kAnglephi[19810] = 10; 
 
-    kAngle[19816] = 1; 
-    kAngle[19817] = 1; 
-    kAngle[19818] = 1; 
-    kAngle[19819] = 1; 
-    kAngle[19820] = 1; 
-    kAngle[19821] = 1; 
-    kAngle[19822] = 1; 
-    kAngle[19823] = 1; 
-    kAngle[19824] = 1; 
-    kAngle[19825] = 1; 
-    kAngle[19826] = 1; 
-    kAngle[19827] = 1; 
-    kAngle[19828] = 1; 
+    kAnglephi[19816] = 1; 
+    kAnglephi[19817] = 1; 
+    kAnglephi[19818] = 1; 
+    kAnglephi[19819] = 1; 
+    kAnglephi[19820] = 1; 
+    kAnglephi[19821] = 1; 
+    kAnglephi[19822] = 1; 
+    kAnglephi[19823] = 1; 
+    kAnglephi[19824] = 1; 
+    kAnglephi[19825] = 1; 
+    kAnglephi[19826] = 1; 
+    kAnglephi[19827] = 1; 
+    kAnglephi[19828] = 1; 
 
-    kAngle[19830] = 20; 
-    kAngle[19831] = 20; 
-    kAngle[19832] = 20; 
-    kAngle[19833] = 20; 
-    kAngle[19834] = 20; 
-    kAngle[19835] = 20; 
-    kAngle[19836] = 20; 
-    kAngle[19837] = 20; 
-    kAngle[19838] = 20; 
-    kAngle[19839] = 20; 
-    kAngle[19840] = 20; 
-    kAngle[19841] = 20; 
+    kAnglephi[19830] = 20; 
+    kAnglephi[19831] = 20; 
+    kAnglephi[19832] = 20; 
+    kAnglephi[19833] = 20; 
+    kAnglephi[19834] = 20; 
+    kAnglephi[19835] = 20; 
+    kAnglephi[19836] = 20; 
+    kAnglephi[19837] = 20; 
+    kAnglephi[19838] = 20; 
+    kAnglephi[19839] = 20; 
+    kAnglephi[19840] = 20; 
+    kAnglephi[19841] = 20; 
 
   }
 
@@ -758,7 +758,7 @@ private:
   const  int       kNruns;
          double   *kDlength;
          int      *kBfield;
-         int      *kAngle;
+         int      *kAnglephi;
   const  double    kDLoff;
   static Runinfo  *gInstancePtr;
 };
