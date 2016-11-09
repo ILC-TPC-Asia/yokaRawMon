@@ -41,7 +41,8 @@ const int    kZdiffCut    = 5.0;
 //const int    kZdiffCut    = 3.0;
 ///////////////////////////////////////
 
-void reco(Int_t run = 17319, Double_t p = 5., const Char_t *delxfile = "Results/deltax0.dat")
+void reco(Int_t run = 18547, Double_t p = 5., const Char_t *delxfile = "Results/deltax0.dat")
+//void reco(Int_t run = 17319, Double_t p = 5., const Char_t *delxfile = "Results/deltax0.dat")
 //void reco(Int_t run = 17324, Double_t p = 5., const Char_t *delxfile = "Results/deltax0.dat")
 //void reco(Int_t run = 17327, Double_t p = 5., const Char_t *delxfile = "Results/deltax0.dat")
 //void reco(Int_t run = 17331, Double_t p = 5., const Char_t *delxfile = "Results/deltax0.dat")
@@ -105,7 +106,8 @@ void reco(Int_t run = 17319, Double_t p = 5., const Char_t *delxfile = "Results/
     cerr << "Create new directory: " << dirname.str().data() << endl;
   }
   stringstream foutstr;
-  foutstr << dirname.str().data() << "/p." << p << "_z." << rinfo.GetDlength(run) << "_B." << rinfo.GetBfield(run) << ".root" << ends;
+  //foutstr << dirname.str().data() << "/p." << p << "_z." << rinfo.GetDlength(run) << "_B." << rinfo.GetBfield(run) << "_φ." << rinfo.GetAngle(run) << ".root" << ends;
+  foutstr << dirname.str().data() << "/p." << p << "_z." << rinfo.GetDlength(run) << "_B." << rinfo.GetBfield(run)  << ".root" << ends;
   cerr << "Outfile: " << foutstr.str().data() << endl;
   TFile *hfp = new TFile(foutstr.str().data(),"RECREATE","Marilin");
 
