@@ -660,8 +660,8 @@ private:
     kBfield[20054] = 1;    
     kBfield[20055] = 1;
 
-    kDlength[20056] = 1;    
-    kDlength[20057] = 1;
+    kBfield[20056] = 1;    
+    kBfield[20057] = 1;
 
     kAnglephi[19717] = 0;
     kAnglephi[19718] = 0;
