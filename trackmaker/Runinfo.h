@@ -321,6 +321,28 @@ private:
     kDlength[19894] = 2.5;    
     kDlength[19895] = 1.25;    
 
+    kDlength[20034] = 2.5;    
+
+    kDlength[20042] = 2.5;    
+    kDlength[20041] = 1.25;    
+    kDlength[20043] = 5;    
+    kDlength[20044] = 7.5;    
+    kDlength[20045] = 10;    
+    kDlength[20046] = 12.5;    
+    kDlength[20047] = 15;    
+    kDlength[20048] = 20;    
+    kDlength[20049] = 25;    
+    kDlength[20050] = 30;    
+    kDlength[20051] = 35;    
+    kDlength[20052] = 40;    
+    kDlength[20053] = 45;    
+    kDlength[20054] = 50;    
+    kDlength[20055] = 55;
+
+    kDlength[20056] = 55;    
+    kDlength[20057] = 56.8;    
+    kDlength[20054] = 50;    
+
     kBfield[7049] = 1;
     kBfield[7046] = 1;
     kBfield[7051] = 1;
@@ -619,6 +641,8 @@ private:
     kBfield[19893] = 1;    
     kBfield[19894] = 1;    
 
+    kBfield[20034] = 0;    
+
     kAnglephi[19717] = 0;
     kAnglephi[19718] = 0;
     kAnglephi[19719] = 0;
@@ -751,6 +775,8 @@ private:
     kAnglephi[19839] = 20; 
     kAnglephi[19840] = 20; 
     kAnglephi[19841] = 20; 
+
+    kAnglephi[20034] = 0; 
 
   }
 
