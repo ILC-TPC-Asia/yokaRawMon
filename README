@@ -1,4 +1,5 @@
 -------------------------------------------------------------------------------
+2016/11/10 (Git instruction updated)   
 2016/10/31 (Git instruction updated)   
 2016/10/26 (Git instruction updated)   
 2016/10/20 (Git instruction original)   
@@ -9,6 +10,11 @@ $ cd <your_working_directory>
 $ git init
 $ git clone git://github.com/ILC-TPC-Asia/yokaRawMonNeo.git
 $ cd yokaRawMonNeo
+
+Tips)
+a) To update only one of files (e.g. Runinfo.h).
+$ git fetch origin
+$ git checkout remote/origin/master <PATH/TO/FILE>       # Retrieving from a branch ("master" in this case)
 
 -------------------------------------------------------------------------------
 2) Commit your developments (You need the membership to commit to the repository.)
