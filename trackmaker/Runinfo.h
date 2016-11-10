@@ -340,8 +340,9 @@ private:
     kDlength[20055] = 55;
 
     kDlength[20056] = 55;    
-    kDlength[20057] = 56.8;    
-    kDlength[20054] = 50;    
+    kDlength[20057] = 56.8;
+
+//    kDlength[20054] = 50;    
 
     kBfield[7049] = 1;
     kBfield[7046] = 1;
@@ -642,6 +643,25 @@ private:
     kBfield[19894] = 1;    
 
     kBfield[20034] = 0;    
+
+    kBfield[20042] = 1;    
+    kBfield[20041] = 1;    
+    kBfield[20043] = 1;    
+    kBfield[20044] = 1;    
+    kBfield[20045] = 1;    
+    kBfield[20046] = 1;    
+    kBfield[20047] = 1;    
+    kBfield[20048] = 1;    
+    kBfield[20049] = 1;    
+    kBfield[20050] = 1;    
+    kBfield[20051] = 1;    
+    kBfield[20052] = 1;    
+    kBfield[20053] = 1;    
+    kBfield[20054] = 1;    
+    kBfield[20055] = 1;
+
+    kDlength[20056] = 1;    
+    kDlength[20057] = 1;
 
     kAnglephi[19717] = 0;
     kAnglephi[19718] = 0;
