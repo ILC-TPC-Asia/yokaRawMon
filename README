@@ -1,27 +1,29 @@
 -------------------------------------------------------------------------------
+2016/10/31 (Git instruction updated)   
 2016/10/26 (Git instruction updated)   
 2016/10/20 (Git instruction original)   
 -------------------------------------------------------------------------------
-1) Setup local repository (For users who do not need to upload his/her codes.)
+1) Setup local repository 
 -------------------------------------------------------------------------------
 $ cd <your_working_directory>
 $ git init
 $ git clone git://github.com/ILC-TPC-Asia/yokaRawMonNeo.git
 $ cd yokaRawMonNeo
--------------------------------------------------------------------------------
-2) Setup local repository (For developers)
--------------------------------------------------------------------------------
-$ cd <your_working_directory>
-$ git init
-$ git clone https://github.com/ILC-TPC-Asia/yokaRawMonNeo.git
-$ cd yokaRawMonNeo
-$ git checkout -b dev
 
-To upload source codes (In yokaRawMonNeo directory):
+-------------------------------------------------------------------------------
+2) Commit your developments (You need the membership to commit to the repository.)
+-------------------------------------------------------------------------------
+(In yokaRawMonNeo directory):
+$ git remote add myrepo https://github.com/ILC-TPC-Asia/yokaRawMonNeo.git
+$ git checkout -b dev
+(The above procedures are necessary only once.)
+
 $ git add <modified_file_names>
 $ git commit -m "WRITE COMMENTS HERE."
-$ git push origin dev:master 
+
+$ git push myrepo dev:master 
 -------------------------------------------------------------------------------
+Find more details on Git in other references.
 
 
 0) Preparation of KalTest
@@ -37,8 +39,8 @@ $ make
 2) How to Run
 $ cd unpacker
 $ ./unpacker.sh <rawdata_file>
-$ cd trackmaker
-$ run -l reco.C
+$ cd ../trackmaker
+$ root -l reco.C
 
 3) How to do many runs at one time
 $ vi manyrun.sh
