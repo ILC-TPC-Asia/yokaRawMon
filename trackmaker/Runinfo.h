@@ -1,812 +1,396 @@
 #ifndef Runinfo_H
 #define Runinfo_H
 #include <iostream>
+#include <map>
+
+using namespace std;
 
 class Runinfo {
 public:
-  ~Runinfo()
-  {
-    if (kDlength) delete [] kDlength;
-    if (kBfield)  delete [] kBfield;
-    if (kAnglephi)  delete [] kAnglephi;
-  }
-
-  inline double GetDlength(int run) const { return run < kNruns ? kDlength[run] : 1.e10; } 
-  inline int GetBfield (int run) const { return run < kNruns ? kBfield [run] : 1.e10; } 
-  inline int GetAnglephi (int run) const { return run < kNruns ? kAnglephi [run] : 1.e10; } 
-  inline double GetDLOffset(int run) const { return kDLoff; }
-
+  // ----------
+  // Getters
+  // ----------
   static Runinfo *GetInstancePtr()
   {
     if (!gInstancePtr) gInstancePtr = new Runinfo;
     return gInstancePtr;
   }
 
-private:
-#if 0
-  Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kAnglephi(0), kDLoff(2.8)
-#else
-  //Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kDLoff(-0.6)
-  Runinfo() : kNruns(100000), kDlength(0), kBfield(0), kAnglephi(0), kDLoff(-1.0)
-  //Runinfo() : kNruns(100000), kDlength(0), kBfield(0) ,kDLoff(-1.0)
-#endif
+  inline double GetDlength  (int run)
   {
-    kDlength = new double[kNruns];
-    kBfield  = new int[kNruns];
-    kAnglephi  = new int[kNruns];
-    for (Int_t i=0; i<kNruns; i++) {
-      kDlength[i] = 0;
-      kBfield [i] = 0;
-      kAnglephi [i] = 0;
-    }
-    kDlength[6953] = 10;
-    kDlength[6957] = 15;
-    kDlength[6958] = 20;
-    kDlength[6972] = 25;
-    kDlength[6973] = 30;
-    kDlength[6974] = 35;
-    kDlength[6975] = 40;
-    kDlength[6976] = 45;
-    kDlength[6977] = 50;
-
-    kDlength[7049] = 10;
-    kDlength[7046] = 15;
-    kDlength[7051] = 20;
-    kDlength[7052] = 25;
-    kDlength[7053] = 25;
-    kDlength[7059] = 30;
-    kDlength[7061] = 35;
-    kDlength[7065] = 40;
-    kDlength[7020] = 45;
-    kDlength[7023] = 50;
-
-    kDlength[17319] =  5;
-    kDlength[17324] = 15;
-    kDlength[17327] = 25;
-    kDlength[17331] = 35;
-    kDlength[17340] = 45;
-    kDlength[17344] = 55;
-    kDlength[17352] = 50;
-    kDlength[17356] = 40;
-    kDlength[17359] = 30;
-    kDlength[17364] = 20;
-    kDlength[17367] = 10;
-
-    kDlength[18241] = 2.5;
-    kDlength[18238] = 5;
-    kDlength[18218] = 7.5;
-    kDlength[18221] = 10;
-    kDlength[18224] = 15;
-    kDlength[18226] = 20;
-    kDlength[18228] = 25;
-    kDlength[18230] = 30;
-    kDlength[18233] = 40;
-    kDlength[18243] = 50;
-
-    kDlength[18412] = 3.5;
-    kDlength[18413] = 6;
-    kDlength[18414] = 7.5;
-    kDlength[18415] = 10;
-    kDlength[18417] = 12.5;
-    kDlength[18418] = 15;
-    kDlength[18419] = 20;
-    kDlength[18420] = 25;
-    kDlength[18421] = 30;
-    kDlength[18423] = 40;
-    kDlength[18424] = 50;
-
-    kDlength[18564] = 5;
-    kDlength[18563] = 6.5;
-    kDlength[18562] = 9;
-    kDlength[18561] = 11.5;
-    kDlength[18552] = 14;
-    kDlength[18551] = 19;
-    kDlength[18550] = 24;
-    kDlength[18549] = 29;
-    kDlength[18548] = 39;
-    kDlength[18547] = 49;
-    
-    kDlength[18609] = 2.5;
-    kDlength[18606] = 5;
-    kDlength[18605] = 7.5;
-    kDlength[18601] = 10;
-    kDlength[18600] = 12.5;
-    kDlength[18598] = 15;
-    kDlength[18597] = 20;
-    kDlength[18595] = 25;
-    kDlength[18594] = 30;
-    kDlength[18592] = 40;
-    kDlength[18591] = 50;
-
-    kDlength[19611] = 25; //temporary
-    kDlength[19616] = 10; //temporary
-   
-    kDlength[19636] = 11.5; //modified
-    kDlength[19637] = 16.5; 
-    kDlength[19638] = 21.5; 
-    kDlength[19639] = 26.5; 
-    kDlength[19640] = 31.5; 
-    kDlength[19641] = 36.5; 
-    kDlength[19643] = 39; 
-    kDlength[19644] = 16.5; 
-    kDlength[19645] = 11.5; 
-    kDlength[19646] = 6.5; 
-    kDlength[19647] = 4.5; 
-    kDlength[19648] = 2.5; 
-    kDlength[19649] = 0.5; 
-    kDlength[19651] = 36.5; 
-    kDlength[19652] = 41.5; 
-    kDlength[19653] = 41.5; 
-    kDlength[19654] = 36.5; 
-    kDlength[19655] = 46.5; 
-    kDlength[19656] = 51.5; 
-    kDlength[19657] = 56.5; 
-
-    kDlength[19666] = 56.8; //modified
-    kDlength[19667] = 55; 
-    kDlength[19668] = 50; 
-    kDlength[19669] = 45; 
-    kDlength[19670] = 40; 
-    kDlength[19671] = 35; 
-    kDlength[19672] = 30; 
-    kDlength[19673] = 25; 
-    kDlength[19674] = 19.6; 
-    kDlength[19675] = 14.6; 
-    kDlength[19676] = 9.6; 
-    kDlength[19677] = 4.6;  
-    kDlength[19678] = 2.6;  
-    kDlength[19680] = 0;  
-
-    kDlength[19687] = 2.5;  
-    kDlength[19692] = 5.0;  
-    kDlength[19693] = 10;  
-    kDlength[19696] = 15;  
-    kDlength[19697] = 20;  
-    kDlength[19698] = 25;  
-    kDlength[19699] = 30;  
-    kDlength[19700] = 35;  
-    kDlength[19701] = 40;  
-    kDlength[19702] = 45;  
-    kDlength[19703] = 50;  
-    kDlength[19704] = 55;
-
-    kDlength[19717] = 2.5;  
-    kDlength[19718] = 5;  
-    kDlength[19719] = 10;  
-    kDlength[19720] = 15;  
-    kDlength[19721] = 20;  
-    kDlength[19722] = 25;  
-    kDlength[19723] = 30;  
-    kDlength[19724] = 35;  
-    kDlength[19725] = 40;  
-    kDlength[19726] = 45;  
-    kDlength[19727] = 50;  
-    kDlength[19728] = 55;  
-
-    kDlength[19732] = 55;  
-    kDlength[19733] = 50;  
-    kDlength[19734] = 45;  
-    kDlength[19735] = 40;  
-    kDlength[19736] = 35;  
-    kDlength[19737] = 30;  
-    kDlength[19738] = 25;  
-    kDlength[19739] = 20;  
-    kDlength[19740] = 15;  
-    kDlength[19741] = 10;  
-    kDlength[19742] = 5;  
-    kDlength[19743] = 2.5;  
-
-    kDlength[19746] = 2.5;  
-    kDlength[19747] = 5;  
-    kDlength[19748] = 10;  
-    kDlength[19749] = 15;  
-    kDlength[19750] = 20;  
-    kDlength[19752] = 25;  
-    kDlength[19753] = 30;  
-    kDlength[19754] = 35;  
-    kDlength[19755] = 40;  
-    kDlength[19756] = 45;  
-    kDlength[19757] = 50;  
-    kDlength[19758] = 55;  
-
-    kDlength[19751] = 20;
-
-    kDlength[19761] = 55;  
-    kDlength[19762] = 50;  
-    kDlength[19763] = 45;  
-    kDlength[19764] = 40;  
-    kDlength[19765] = 35;  
-    kDlength[19766] = 30;  
-    kDlength[19767] = 25;  
-    kDlength[19768] = 20;  
-    kDlength[19769] = 15;  
-    kDlength[19770] = 10;  
-    kDlength[19771] = 5;  
-    kDlength[19772] = 2.5; 
-
-    kDlength[19782] = 2.5; 
-    kDlength[19783] = 5; 
-    kDlength[19784] = 10; 
-    kDlength[19786] = 15; 
-    kDlength[19787] = 20; 
-    kDlength[19788] = 25; 
-    kDlength[19789] = 30; 
-    kDlength[19790] = 35; 
-    kDlength[19791] = 40; 
-    kDlength[19792] = 45; 
-    kDlength[19793] = 50; 
-    kDlength[19794] = 55; 
-
-    kDlength[19785] = 10;//Vcath=350 V,Vanode=315 V 
-
-    kDlength[19800] = 50; 
-    kDlength[19801] = 45; 
-    kDlength[19802] = 40; 
-    kDlength[19803] = 35; 
-    kDlength[19804] = 30; 
-    kDlength[19805] = 25; 
-    kDlength[19806] = 20; 
-    kDlength[19807] = 15; 
-    kDlength[19808] = 10; 
-    kDlength[19809] = 5; 
-    kDlength[19810] = 2.5; 
-   
-    kDlength[19816] = 2.5; 
-    kDlength[19817] = 5; 
-    kDlength[19818] = 10; 
-    kDlength[19819] = 15; 
-    kDlength[19820] = 20; 
-    kDlength[19821] = 25; 
-    kDlength[19822] = 30; 
-    kDlength[19824] = 35; 
-    kDlength[19825] = 40; 
-    kDlength[19826] = 45; 
-    kDlength[19827] = 50; 
-    kDlength[19828] = 55; 
-
-    kDlength[19823] = 35; //Vcath=350 V,Vanode=315 V 
-
-    kDlength[19830] = 55;  
-    kDlength[19831] = 50;  
-    kDlength[19832] = 45;  
-    kDlength[19833] = 40;  
-    kDlength[19834] = 35;  
-    kDlength[19835] = 30;  
-    kDlength[19836] = 25;  
-    kDlength[19837] = 20;  
-    kDlength[19838] = 15;  
-    kDlength[19839] = 10;  
-    kDlength[19840] = 5;  
-    kDlength[19841] = 2.5;    
-
-    kDlength[19848] = 25;  
-    kDlength[19849] = 25;  
-    kDlength[19850] = 25;  
-    kDlength[19851] = 25;  
-    kDlength[19852] = 15;  
-    kDlength[19853] = 15;  
-    kDlength[19854] = 35;  
-    kDlength[19855] = 35;  
-   
-    kDlength[19860] = 35;  
-    kDlength[19861] = 25;  
-    kDlength[19862] = 20;  
-    kDlength[19863] = 15;    
-    kDlength[19864] = 10;    
-    kDlength[19865] = 5;    
-    kDlength[19866] = 2.5;    
-    kDlength[19867] = 1.25;    
-    kDlength[19868] = 0.75;    
-    kDlength[19869] = 7.5;    
-    kDlength[19870] = 12.5;    
-    kDlength[19871] = 30;    
-    kDlength[19872] = 40;    
-    kDlength[19873] = 50;    
-    kDlength[19874] = 55;    
-    kDlength[19875] = 55;       
-
-    kDlength[19881] = 55;    
-    kDlength[19882] = 50;    
-    kDlength[19883] = 45;    
-    kDlength[19884] = 40;    
-    kDlength[19885] = 35;    
-    kDlength[19886] = 30;    
-    kDlength[19887] = 25;    
-    kDlength[19888] = 20;    
-    kDlength[19889] = 15;    
-    kDlength[19890] = 12.5;    
-    kDlength[19891] = 10;    
-    kDlength[19892] = 7.5;    
-    kDlength[19893] = 5;    
-    kDlength[19894] = 2.5;    
-    kDlength[19895] = 1.25;    
-
-    kDlength[20034] = 2.5;    
-
-    kDlength[20042] = 2.5;    
-    kDlength[20041] = 1.25;    
-    kDlength[20043] = 5;    
-    kDlength[20044] = 7.5;    
-    kDlength[20045] = 10;    
-    kDlength[20046] = 12.5;    
-    kDlength[20047] = 15;    
-    kDlength[20048] = 20;    
-    kDlength[20049] = 25;    
-    kDlength[20050] = 30;    
-    kDlength[20051] = 35;    
-    kDlength[20052] = 40;    
-    kDlength[20053] = 45;    
-    kDlength[20054] = 50;    
-    kDlength[20055] = 55;
-
-    kDlength[20056] = 55;    
-    kDlength[20057] = 56.8;
-
-//    kDlength[20054] = 50;    
-
-    kBfield[7049] = 1;
-    kBfield[7046] = 1;
-    kBfield[7051] = 1;
-    kBfield[7052] = 1;
-    kBfield[7053] = 1;
-    kBfield[7059] = 1;
-    kBfield[7061] = 1;
-    kBfield[7065] = 1;
-    kBfield[7020] = 1;
-    kBfield[7023] = 1;
-
-    kBfield[17319] = 1;
-    kBfield[17324] = 1;
-    kBfield[17327] = 1;
-    kBfield[17331] = 1;
-    kBfield[17340] = 1;
-    kBfield[17344] = 1;
-    kBfield[17352] = 1;
-    kBfield[17356] = 1;
-    kBfield[17359] = 1;
-    kBfield[17364] = 1;
-    kBfield[17367] = 1;
-
-    kBfield[18241] = 1;
-    kBfield[18238] = 1;
-    kBfield[18218] = 1;
-    kBfield[18221] = 1;
-    kBfield[18224] = 1;
-    kBfield[18226] = 1;
-    kBfield[18228] = 1;
-    kBfield[18230] = 1;
-    kBfield[18233] = 1;
-    kBfield[18243] = 1;
-
-    kBfield[18412] = 1;
-    kBfield[18413] = 1;
-    kBfield[18414] = 1;
-    kBfield[18415] = 1;
-    kBfield[18417] = 1;
-    kBfield[18418] = 1;
-    kBfield[18419] = 1;
-    kBfield[18420] = 1;
-    kBfield[18421] = 1;
-    kBfield[18423] = 1;
-    kBfield[18424] = 1;
-
-    kBfield[18564] = 1;
-    kBfield[18563] = 1;
-    kBfield[18562] = 1;
-    kBfield[18561] = 1;
-    kBfield[18552] = 1;
-    kBfield[18551] = 1;
-    kBfield[18550] = 1;
-    kBfield[18549] = 1;
-    kBfield[18548] = 1;
-    kBfield[18547] = 1;
-
-    kBfield[18609] = 1;
-    kBfield[18606] = 1;
-    kBfield[18605] = 1;
-    kBfield[18601] = 1;
-    kBfield[18600] = 1;
-    kBfield[18598] = 1;
-    kBfield[18597] = 1;
-    kBfield[18595] = 1;
-    kBfield[18594] = 1;
-    kBfield[18592] = 1;
-    kBfield[18591] = 1;
-    
-    kBfield[19611] = 0;
-    kBfield[19616] = 0;
-   
-    kBfield[19636] = 1;
-    kBfield[19637] = 1;
-    kBfield[19638] = 1;
-    kBfield[19639] = 1;
-    kBfield[19640] = 1;
-    kBfield[19641] = 1;
-    kBfield[19643] = 1;
-    kBfield[19644] = 1;
-    kBfield[19645] = 1;
-    kBfield[19646] = 1;
-    kBfield[19647] = 1;
-    kBfield[19648] = 1;
-    kBfield[19649] = 1;
-    kBfield[19650] = 1;
-    kBfield[19651] = 1;
-    kBfield[19652] = 1;
-    kBfield[19653] = 1;
-    kBfield[19654] = 1;
-    kBfield[19655] = 1;
-    kBfield[19656] = 1;
-    kBfield[19657] = 1;
-
-    kBfield[19666] = 1;
-    kBfield[19667] = 1;
-    kBfield[19668] = 1;
-    kBfield[19669] = 1;
-    kBfield[19670] = 1;
-    kBfield[19671] = 1;
-    kBfield[19672] = 1;
-    kBfield[19673] = 1;
-    kBfield[19674] = 1;
-    kBfield[19675] = 1;
-    kBfield[19676] = 1;
-    kBfield[19677] = 1;
-    kBfield[19678] = 1;
-    kBfield[19679] = 1;
-
-    kBfield[19687] = 0;
-    kBfield[19692] = 0;
-    kBfield[19693] = 0;
-    kBfield[19696] = 0;
-    kBfield[19697] = 0;
-    kBfield[19698] = 0;
-    kBfield[19699] = 0;
-    kBfield[19700] = 0;
-    kBfield[19701] = 0;
-    kBfield[19702] = 0;
-    kBfield[19703] = 0;
-    kBfield[19704] = 0;
-
-    kBfield[19717] = 1;
-    kBfield[19718] = 1;
-    kBfield[19719] = 1;
-    kBfield[19720] = 1;
-    kBfield[19721] = 1;
-    kBfield[19722] = 1;
-    kBfield[19723] = 1;
-    kBfield[19724] = 1;
-    kBfield[19725] = 1;
-    kBfield[19726] = 1;
-    kBfield[19727] = 1;
-    kBfield[19728] = 1;
-
-    kBfield[19732] = 1;
-    kBfield[19733] = 1;
-    kBfield[19734] = 1;
-    kBfield[19735] = 1;
-    kBfield[19736] = 1;
-    kBfield[19737] = 1;
-    kBfield[19738] = 1;
-    kBfield[19739] = 1;
-    kBfield[19740] = 1;
-    kBfield[19741] = 1;
-    kBfield[19742] = 1;
-    kBfield[19743] = 1;
-
-    kBfield[19746] = 1;
-    kBfield[19747] = 1;
-    kBfield[19748] = 1;
-    kBfield[19749] = 1;
-    kBfield[19750] = 1;
-    kBfield[19752] = 1;
-    kBfield[19753] = 1;
-    kBfield[19754] = 1;
-    kBfield[19755] = 1;
-    kBfield[19756] = 1;
-    kBfield[19757] = 1;
-    kBfield[19758] = 1;
-
-    kBfield[19732] = 1;  
-    kBfield[19733] = 1;  
-    kBfield[19734] = 1;  
-    kBfield[19735] = 1;  
-    kBfield[19736] = 1;  
-    kBfield[19737] = 1;  
-    kBfield[19738] = 1;  
-    kBfield[19739] = 1;  
-    kBfield[19740] = 1;  
-    kBfield[19741] = 1;  
-    kBfield[19742] = 1;  
-    kBfield[19743] = 1;  
-
-    kBfield[19746] = 1;  
-    kBfield[19747] = 1;  
-    kBfield[19748] = 1;  
-    kBfield[19749] = 1;  
-    kBfield[19750] = 1;  
-    kBfield[19752] = 1;  
-    kBfield[19753] = 1;  
-    kBfield[19754] = 1;  
-    kBfield[19755] = 1;  
-    kBfield[19756] = 1;  
-    kBfield[19757] = 1;  
-    kBfield[19758] = 1;  
-
-    kBfield[19751] = 1;
-
-    kBfield[19761] = 1;  
-    kBfield[19762] = 1;  
-    kBfield[19763] = 1;  
-    kBfield[19764] = 1;  
-    kBfield[19765] = 1;  
-    kBfield[19766] = 1;  
-    kBfield[19767] = 1;  
-    kBfield[19768] = 1;  
-    kBfield[19769] = 1;  
-    kBfield[19770] = 1;  
-    kBfield[19771] = 1;  
-    kBfield[19772] = 1; 
-
-    kBfield[19782] = 0; 
-    kBfield[19783] = 0; 
-    kBfield[19784] = 0; 
-    kBfield[19786] = 0; 
-    kBfield[19787] = 0; 
-    kBfield[19788] = 0; 
-    kBfield[19789] = 0; 
-    kBfield[19790] = 0; 
-    kBfield[19791] = 0; 
-    kBfield[19792] = 0; 
-    kBfield[19793] = 0; 
-    kBfield[19794] = 0; 
-
-    kBfield[19785] = 0;//Vcath=350 V,Vanode=315 V 
-
-    kBfield[19800] = 0; 
-    kBfield[19801] = 0; 
-    kBfield[19802] = 0; 
-    kBfield[19803] = 0; 
-    kBfield[19804] = 0; 
-    kBfield[19805] = 0; 
-    kBfield[19806] = 0; 
-    kBfield[19807] = 0; 
-    kBfield[19808] = 0; 
-    kBfield[19809] = 0; 
-    kBfield[19810] = 0; 
-   
-    kBfield[19816] = 0; 
-    kBfield[19817] = 0; 
-    kBfield[19818] = 0; 
-    kBfield[19819] = 0; 
-    kBfield[19820] = 0; 
-    kBfield[19821] = 0; 
-    kBfield[19822] = 0; 
-    kBfield[19824] = 0; 
-    kBfield[19825] = 0; 
-    kBfield[19826] = 0; 
-    kBfield[19827] = 0; 
-    kBfield[19828] = 0; 
-
-    kBfield[19823] = 0; //Vcath=350 V,Vanode=315 V 
-
-    kBfield[19830] = 0;  
-    kBfield[19831] = 0;  
-    kBfield[19832] = 0; 
-    kBfield[19833] = 0;  
-    kBfield[19834] = 0;  
-    kBfield[19835] = 0;  
-    kBfield[19836] = 0;  
-    kBfield[19837] = 0;  
-    kBfield[19838] = 0;  
-    kBfield[19839] = 0;  
-    kBfield[19840] = 0;  
-    kBfield[19841] = 0;    
-
-    kBfield[19848] = 0;  
-    kBfield[19849] = 0;  
-    kBfield[19850] = 0;  
-    kBfield[19851] = 0;  
-    kBfield[19852] = 0;  
-    kBfield[19853] = 0;  
-    kBfield[19854] = 0;  
-    kBfield[19855] = 0;  
-   
-    kBfield[19860] = 1;  
-    kBfield[19861] = 1;  
-    kBfield[19862] = 1;  
-    kBfield[19863] = 1;    
-    kBfield[19864] = 1;    
-    kBfield[19865] = 1;    
-    kBfield[19866] = 1;    
-    kBfield[19867] = 1;    
-    kBfield[19868] = 1;    
-    kBfield[19869] = 1;    
-    kBfield[19870] = 1;    
-    kBfield[19871] = 1;    
-    kBfield[19872] = 1;    
-    kBfield[19873] = 1;    
-    kBfield[19874] = 1;    
-    kBfield[19875] = 1;       
-
-    kBfield[19881] = 1;    
-    kBfield[19882] = 1;    
-    kBfield[19883] = 1;    
-    kBfield[19884] = 1;    
-    kBfield[19885] = 1;    
-    kBfield[19886] = 1;    
-    kBfield[19887] = 1;    
-    kBfield[19888] = 1;    
-    kBfield[19889] = 1;    
-    kBfield[19890] = 1;    
-    kBfield[19891] = 1;    
-    kBfield[19892] = 1;    
-    kBfield[19893] = 1;    
-    kBfield[19894] = 1;    
-
-    kBfield[20034] = 0;    
-
-    kBfield[20042] = 1;    
-    kBfield[20041] = 1;    
-    kBfield[20043] = 1;    
-    kBfield[20044] = 1;    
-    kBfield[20045] = 1;    
-    kBfield[20046] = 1;    
-    kBfield[20047] = 1;    
-    kBfield[20048] = 1;    
-    kBfield[20049] = 1;    
-    kBfield[20050] = 1;    
-    kBfield[20051] = 1;    
-    kBfield[20052] = 1;    
-    kBfield[20053] = 1;    
-    kBfield[20054] = 1;    
-    kBfield[20055] = 1;
-
-    kBfield[20056] = 1;    
-    kBfield[20057] = 1;
-
-    kAnglephi[19717] = 0;
-    kAnglephi[19718] = 0;
-    kAnglephi[19719] = 0;
-    kAnglephi[19720] = 0;
-    kAnglephi[19721] = 0;
-    kAnglephi[19722] = 0;
-    kAnglephi[19723] = 0;
-    kAnglephi[19724] = 0;
-    kAnglephi[19725] = 0;
-    kAnglephi[19726] = 0;
-    kAnglephi[19727] = 0;
-    kAnglephi[19728] = 0;
-    
-    kAnglephi[19743] = 10;
-    kAnglephi[19742] = 10;
-    kAnglephi[19741] = 10;
-    kAnglephi[19739] = 10;
-    kAnglephi[19738] = 10;
-    kAnglephi[19737] = 10;
-    kAnglephi[19736] = 10;
-    kAnglephi[19735] = 10;
-    kAnglephi[19734] = 10;
-    kAnglephi[19733] = 10;
-    kAnglephi[19732] = 10;
-
-    kAnglephi[19746] = 20;
-    kAnglephi[19747] = 20;
-    kAnglephi[19748] = 20;
-    kAnglephi[19749] = 20;
-    kAnglephi[19750] = 20;
-    kAnglephi[19752] = 20;
-    kAnglephi[19753] = 20;
-    kAnglephi[19754] = 20;
-    kAnglephi[19755] = 20;
-    kAnglephi[19756] = 20;
-    kAnglephi[19757] = 20;
-    kAnglephi[19758] = 20;
-
-    kAnglephi[19732] = 10;  
-    kAnglephi[19733] = 10;  
-    kAnglephi[19734] = 10;  
-    kAnglephi[19735] = 10;  
-    kAnglephi[19736] = 10;  
-    kAnglephi[19737] = 10;  
-    kAnglephi[19738] = 10;  
-    kAnglephi[19739] = 10;  
-    kAnglephi[19740] = 10;  
-    kAnglephi[19741] = 10;  
-    kAnglephi[19742] = 10;  
-    kAnglephi[19743] = 10;  
-
-    kAnglephi[19746] = 20;  
-    kAnglephi[19747] = 20;  
-    kAnglephi[19748] = 20;  
-    kAnglephi[19749] = 20;  
-    kAnglephi[19750] = 20;  
-    kAnglephi[19752] = 20;  
-    kAnglephi[19753] = 20;  
-    kAnglephi[19754] = 20;  
-    kAnglephi[19755] = 20;  
-    kAnglephi[19756] = 20;  
-    kAnglephi[19757] = 20;  
-    kAnglephi[19758] = 20;  
-
-    kAnglephi[19751] = 20;
-
-    kAnglephi[19761] = 20;  
-    kAnglephi[19762] = 20;  
-    kAnglephi[19763] = 20;  
-    kAnglephi[19764] = 20;  
-    kAnglephi[19765] = 20;  
-    kAnglephi[19766] = 20;  
-    kAnglephi[19767] = 20;  
-    kAnglephi[19768] = 20;  
-    kAnglephi[19769] = 20;  
-    kAnglephi[19770] = 20;  
-    kAnglephi[19771] = 20;  
-    kAnglephi[19772] = 20; 
-
-    kAnglephi[19782] = 20; 
-    kAnglephi[19783] = 20; 
-    kAnglephi[19784] = 20; 
-    kAnglephi[19786] = 20; 
-    kAnglephi[19787] = 20; 
-    kAnglephi[19788] = 20; 
-    kAnglephi[19789] = 20; 
-    kAnglephi[19790] = 20; 
-    kAnglephi[19791] = 20; 
-    kAnglephi[19792] = 20; 
-    kAnglephi[19793] = 20; 
-    kAnglephi[19794] = 20; 
-
-    kAnglephi[19785] = 20;//Vcath=350 V,Vanode=315 V 
-
-    kAnglephi[19800] = 10; 
-    kAnglephi[19801] = 10; 
-    kAnglephi[19802] = 10; 
-    kAnglephi[19803] = 10; 
-    kAnglephi[19804] = 10; 
-    kAnglephi[19805] = 10; 
-    kAnglephi[19806] = 10; 
-    kAnglephi[19807] = 10; 
-    kAnglephi[19808] = 10; 
-    kAnglephi[19809] = 10; 
-    kAnglephi[19810] = 10; 
-
-    kAnglephi[19816] = 1; 
-    kAnglephi[19817] = 1; 
-    kAnglephi[19818] = 1; 
-    kAnglephi[19819] = 1; 
-    kAnglephi[19820] = 1; 
-    kAnglephi[19821] = 1; 
-    kAnglephi[19822] = 1; 
-    kAnglephi[19823] = 1; 
-    kAnglephi[19824] = 1; 
-    kAnglephi[19825] = 1; 
-    kAnglephi[19826] = 1; 
-    kAnglephi[19827] = 1; 
-    kAnglephi[19828] = 1; 
-
-    kAnglephi[19830] = 20; 
-    kAnglephi[19831] = 20; 
-    kAnglephi[19832] = 20; 
-    kAnglephi[19833] = 20; 
-    kAnglephi[19834] = 20; 
-    kAnglephi[19835] = 20; 
-    kAnglephi[19836] = 20; 
-    kAnglephi[19837] = 20; 
-    kAnglephi[19838] = 20; 
-    kAnglephi[19839] = 20; 
-    kAnglephi[19840] = 20; 
-    kAnglephi[19841] = 20; 
-
-    kAnglephi[20034] = 0; 
-
+    if (fRunMap.find(run) == fRunMap.end()) return 1.e10;
+    else                                    return fRunMap[run].getDlength();
   }
 
+  inline double GetBfield   (int run)
+  {
+    if (fRunMap.find(run) == fRunMap.end()) return 1.e10;
+    else                                    return fRunMap[run].getBfield();
+  }
+
+  inline double GetMomentum(int run)
+  {
+    if (fRunMap.find(run) == fRunMap.end()) return 1.e10;
+    else                                    return fRunMap[run].getMomentum();
+  }
+
+  inline double GetAnglephi(int run)
+  {
+    if (fRunMap.find(run) == fRunMap.end()) return 1.e10;
+    else                                    return fRunMap[run].getAnglephi();
+  }
+  
+  inline double GetAngletheta(int run)
+  {
+    if (fRunMap.find(run) == fRunMap.end()) return 1.e10;
+    else                                    return fRunMap[run].getAngletheta();
+  }
+
+  // ---------
+  // Utility
+  // ---------
+  inline void   RegisterRun(int run, int b, double p, double d, double phi, double theta )
+  {
+    if (fRunMap.find(run) == fRunMap.end()) {
+      fRunMap[run] = RunCond(b,p,d,phi,theta);
+    } else {
+      cerr << "run" << run << " already there!" << endl;;
+    }
+  }
+
+
 private:
-  const  int       kNruns;
-         double   *kDlength;
-         int      *kBfield;
-         int      *kAnglephi;
-  const  double    kDLoff;
-  static Runinfo  *gInstancePtr;
+  Runinfo()
+  {
+    //--
+    // 2008 data
+    //--
+    //(Run#)
+/*    RegisterRun(6953, 0, 5, 10);
+    RegisterRun(6957, 0, 5, 15);
+    RegisterRun(6958, 0, 5, 20);
+    RegisterRun(6972, 0, 5, 25);
+    RegisterRun(6973, 0, 5, 30);
+    RegisterRun(6974, 0, 5, 35);
+    RegisterRun(6975, 0, 5, 40);
+    RegisterRun(6976, 0, 5, 45);
+    RegisterRun(6977, 0, 5, 50);
+
+    RegisterRun(7049, 1, 5, 10);
+    RegisterRun(7046, 1, 5, 15);
+    RegisterRun(7051, 1, 5, 20);
+    RegisterRun(7052, 1, 5, 25);
+    RegisterRun(7053, 1, 5, 25);
+    RegisterRun(7059, 1, 5, 30);
+    RegisterRun(7061, 1, 5, 35);
+    RegisterRun(7065, 1, 5, 40);
+    RegisterRun(7020, 1, 5, 45);
+    RegisterRun(7023, 1, 5, 50);
+
+    //--
+    // 2010 data
+    //--
+    RegisterRun(17319, 1, 5,  5);
+    RegisterRun(17324, 1, 5, 15);
+    RegisterRun(17327, 1, 5, 25);
+    RegisterRun(17331, 1, 5, 35);
+    RegisterRun(17375, 1, 5, 35);
+    RegisterRun(17340, 1, 5, 45);
+    RegisterRun(17344, 1, 5, 55);
+    RegisterRun(17352, 1, 5, 50);
+    RegisterRun(17356, 1, 5, 40);
+    RegisterRun(17359, 1, 5, 30);
+    RegisterRun(17364, 1, 5, 20);
+    RegisterRun(17367, 1, 5, 10);
+
+    //--
+    // 2012 data
+    //--
+    RegisterRun(18169, 1, 5, 52);
+    RegisterRun(18180, 1, 5, 52);
+    RegisterRun(18184, 1, 5, 52);
+    RegisterRun(18185, 1, 5, 52);
+    RegisterRun(18192, 1, 5, 0);
+    RegisterRun(18193, 1, 5, 0.1);
+    RegisterRun(18194, 1, 5, 10);
+    RegisterRun(18195, 1, 5, 20);
+    RegisterRun(18196, 1, 5, 30);
+    RegisterRun(18197, 1, 5, 40);
+    RegisterRun(18198, 1, 5, 50);
+    RegisterRun(18199, 1, 5, 0.1);
+    RegisterRun(18201, 1, 5, 0.1);
+    RegisterRun(18205, 1, 5, 0.1);
+    RegisterRun(18208, 1, 5, 0.1);
+    RegisterRun(18214, 1, 5, 2.5);
+    RegisterRun(18215, 1, 5, 5.);
+    RegisterRun(18218, 1, 5, 7.5);
+    RegisterRun(18221, 1, 5, 10);
+    RegisterRun(18224, 1, 5, 15);
+    RegisterRun(18226, 1, 5, 20);
+    RegisterRun(18228, 1, 5, 25);
+    RegisterRun(18230, 1, 5, 30);
+    RegisterRun(18233, 1, 5, 40);
+    RegisterRun(18235, 1, 5, 55);
+    RegisterRun(18238, 1, 5, 5);
+    RegisterRun(18241, 1, 5, 2.5);
+    RegisterRun(18243, 1, 5, 50);
+
+    // gas changed
+    RegisterRun(18247, 1, 5, 50);
+    
+    // angle phi=10
+    RegisterRun(18252, 1, 5, 50);
+    RegisterRun(18253, 1, 5, 40);
+    RegisterRun(18254, 1, 5, 30);
+    RegisterRun(18255, 1, 5, 25);
+    RegisterRun(18259, 1, 5, 20);
+    RegisterRun(18260, 1, 5, 15);
+    RegisterRun(18263, 1, 5, 10);
+    RegisterRun(18264, 1, 5, 7.5);
+    RegisterRun(18266, 1, 5, 5);
+    RegisterRun(18267, 1, 5, 2.5);
+
+    // angle phi=-5
+    RegisterRun(18275, 1, 5, 5);
+    RegisterRun(18278, 1, 5, 7.5);
+    RegisterRun(18280, 1, 5, 10);
+    RegisterRun(18282, 1, 5, 15);
+    RegisterRun(18284, 1, 5, 20);
+    RegisterRun(18286, 1, 5, 25);
+    RegisterRun(18288, 1, 5, 30);
+    RegisterRun(18290, 1, 5, 40);
+    RegisterRun(18295, 1, 5, 50);
+    RegisterRun(18297, 1, 5, 40);
+    RegisterRun(18300, 1, 5, 30);
+    RegisterRun(18302, 1, 5, 25);
+ 
+    // P=3GeV 
+    RegisterRun(18308, 1, 5, 20);
+    RegisterRun(18310, 1, 5, 15);
+    RegisterRun(18312, 1, 5, 15);
+
+    // HV noise removed
+    RegisterRun(18356, 1, 5, 5);
+    RegisterRun(18362, 1, 5, 50);
+    RegisterRun(18367, 1, 5, 40);
+    RegisterRun(18368, 1, 5, 30);
+    RegisterRun(18369, 1, 5, 25);
+    RegisterRun(18370, 1, 5, 20);
+    RegisterRun(18372, 1, 5, 15);
+    RegisterRun(18373, 1, 5, 12.5);
+    RegisterRun(18374, 1, 5, 10);
+    RegisterRun(18375, 1, 5, 7.5);
+    RegisterRun(18377, 1, 5, 2.5);
+
+    // HV increased
+    RegisterRun(18381, 1, 5, 50);
+    RegisterRun(18382, 1, 5, 20);
+    RegisterRun(18385, 1, 5, 50);
+    RegisterRun(18387, 1, 5, 50);
+    // z scan with high gain cathode VGEM=350V
+    RegisterRun(18389, 1, 5, 49);
+    RegisterRun(18390, 1, 5, 39);
+    RegisterRun(18391, 1, 5, 29);
+    RegisterRun(18394, 1, 5, 24);
+    RegisterRun(18395, 1, 5, 19);
+    RegisterRun(18396, 1, 5, 14);
+    RegisterRun(18398, 1, 5, 11.5);
+    RegisterRun(18399, 1, 5, 9);
+    RegisterRun(18400, 1, 5, 6.5);
+    RegisterRun(18403, 1, 5, 5);
+    RegisterRun(18404, 1, 5, 2.5);
+    // z scan with high gain cathode VGEM=355V
+    RegisterRun(18412, 1, 5, 2.5);
+    RegisterRun(18413, 1, 5, 5);
+    RegisterRun(18414, 1, 5, 6.5);
+    RegisterRun(18415, 1, 5, 9);
+    RegisterRun(18417, 1, 5, 11.5);
+    RegisterRun(18418, 1, 5, 14);
+    RegisterRun(18419, 1, 5, 19);
+    RegisterRun(18420, 1, 5, 24);
+    RegisterRun(18421, 1, 5, 29);
+    RegisterRun(18423, 1, 5, 39);
+    RegisterRun(18424, 1, 5, 49);
+
+    // HV 360
+    RegisterRun(18429, 1, 5, 49);
+  
+    // shaper 60ns HV355
+    RegisterRun(18432, 1, 5, 49);
+    RegisterRun(18433, 1, 5, 39);
+    RegisterRun(18434, 1, 5, 29);
+    RegisterRun(18435, 1, 5, 24);
+    RegisterRun(18438, 1, 5, 19);
+    RegisterRun(18439, 1, 5, 14);
+    RegisterRun(18441, 1, 5, 9);
+    RegisterRun(18443, 1, 5, 6.5);
+    RegisterRun(18444, 1, 5, 5);
+
+    // Threshold=3 z-scan B=ON shaper=120 HV=355
+    RegisterRun(18450, 1, 5, 49);
+    RegisterRun(18451, 1, 5, 39);
+    RegisterRun(18453, 1, 5, 29);
+    RegisterRun(18454, 1, 5, 24);
+    RegisterRun(18457, 1, 5, 19);
+    RegisterRun(18458, 1, 5, 14);
+    RegisterRun(18461, 1, 5, 11.5);
+    RegisterRun(18462, 1, 5, 9);
+    RegisterRun(18464, 1, 5, 6.5);
+    RegisterRun(18465, 1, 5, 5);
+    RegisterRun(18466, 1, 5, 2.5);
+
+    // Threshold=3 z-scan B=0 shaper=120 HV=355
+    RegisterRun(18508, 1, 5, 49);
+    RegisterRun(18507, 1, 5, 39);
+    RegisterRun(18506, 1, 5, 29);
+    RegisterRun(18504, 1, 5, 24);
+    RegisterRun(18503, 1, 5, 19);
+    RegisterRun(18502, 1, 5, 14);
+    RegisterRun(18501, 1, 5, 11.5);
+    RegisterRun(18498, 1, 5, 9);
+    RegisterRun(18497, 1, 5, 6.5);
+    RegisterRun(18495, 1, 5, 5);
+    RegisterRun(18494, 1, 5, 2.5);
+
+    // Threshold=3 z-scan B=1 shaper=120 HV=330,355 transfer up
+    RegisterRun(18510, 1, 5, 49);
+    RegisterRun(18511, 1, 5, 39);
+    RegisterRun(18512, 1, 5, 29);
+    RegisterRun(18514, 1, 5, 24);
+    RegisterRun(18515, 1, 5, 19);
+    RegisterRun(18516, 1, 5, 14);
+    RegisterRun(18518, 1, 5, 11.5);
+    RegisterRun(18519, 1, 5, 9);
+    RegisterRun(18520, 1, 5, 6.5);
+    RegisterRun(18524, 1, 5, 5);
+    RegisterRun(18525, 1, 5, 2.5);
+
+    // Threshold=3 z-scan B=1 shaper=120 HV=330,340 low transfer&induction
+    RegisterRun(18545, 1, 5, 49);
+    RegisterRun(18544, 1, 5, 39);
+    RegisterRun(18543, 1, 5, 29);
+    RegisterRun(18542, 1, 5, 24);
+    RegisterRun(18540, 1, 5, 19);
+    RegisterRun(18539, 1, 5, 14);
+    RegisterRun(18538, 1, 5, 11.5);
+    RegisterRun(18537, 1, 5, 9);
+    RegisterRun(18530, 1, 5, 6.5);
+    RegisterRun(18529, 1, 5, 5);
+    RegisterRun(18528, 1, 5, 2.5);
+
+    // Threshold=3 z-scan B=1 shaper=120 HV=330,355 high transfer&induction
+    RegisterRun(18547, 1, 5, 49);
+    RegisterRun(18548, 1, 5, 39);
+    RegisterRun(18549, 1, 5, 29);
+    RegisterRun(18550, 1, 5, 24);
+    RegisterRun(18551, 1, 5, 19);
+    RegisterRun(18552, 1, 5, 14);
+    RegisterRun(18561, 1, 5, 11.5);
+    RegisterRun(18562, 1, 5, 9);
+    RegisterRun(18563, 1, 5, 6.5);
+    RegisterRun(18564, 1, 5, 5);
+
+    // HV 360 360
+    RegisterRun(18570, 1, 5, 49);
+    RegisterRun(18572, 1, 5, 11.5);
+
+    // HV:330,355;Shaper:120;Threshold:3;high EF in transfer and induction gap
+    RegisterRun(18582, 1, 5, 50);
+    RegisterRun(18583, 1, 5, 40);
+    RegisterRun(18585, 1, 5, 30);
+    RegisterRun(18586, 1, 5, 20);
+    RegisterRun(18588, 1, 5, 10);
+
+    // Threshold=3 z-scan B=1 shaper=120 HV=330,355 20000event sametarnsfer & indaction gap 18547~18564
+    RegisterRun(18591, 1, 5, 50);
+    RegisterRun(18592, 1, 5, 40);
+    RegisterRun(18594, 1, 5, 30);
+    RegisterRun(18595, 1, 5, 25);
+    RegisterRun(18597, 1, 5, 20);
+    RegisterRun(18598, 1, 5, 15);
+    RegisterRun(18600, 1, 5, 12.5);
+    RegisterRun(18601, 1, 5, 10);
+    RegisterRun(18605, 1, 5, 7.5);
+    RegisterRun(18606, 1, 5, 5);
+    RegisterRun(18609, 1, 5, 2.5);
+
+    RegisterRun(18721, 1, 5, 50);
+
+    RegisterRun(18739, 1, 5, 2.5);
+    RegisterRun(18740, 1, 5, 10);
+    RegisterRun(18741, 1, 5, 20);
+    RegisterRun(18742, 1, 5, 30);
+    RegisterRun(18743, 1, 5, 40);
+    RegisterRun(18744, 1, 5, 50);
+*/
+    //-------------
+    //2016 data
+    //-------------
+
+    RegisterRun(19782, 1, 5, 2.5, 0, 20);
+    RegisterRun(19783, 1, 5, 5, 0, 20);
+    RegisterRun(19784, 1, 5, 10, 0, 20);
+    RegisterRun(19786, 1, 5, 15, 0, 20);
+    RegisterRun(19787, 1, 5, 20, 0, 20);
+    RegisterRun(19788, 1, 5, 25, 0, 20);
+    RegisterRun(19789, 1, 5, 30, 0, 20);
+    RegisterRun(19790, 1, 5, 35, 0, 20);
+    RegisterRun(19791, 1, 5, 40, 0, 20);
+    RegisterRun(19792, 1, 5, 45, 0, 20);
+    RegisterRun(19793, 1, 5, 50, 0, 20);
+    RegisterRun(19794, 1, 5, 55, 0, 20);
+
+/*
+    RegisterRun(19881, 1, 5, 55);
+    RegisterRun(19882, 1, 5, 50);
+    RegisterRun(19883, 1, 5, 45);
+    RegisterRun(19884, 1, 5, 40);
+    RegisterRun(19885, 1, 5, 35);
+    RegisterRun(19886, 1, 5, 30);
+    RegisterRun(19887, 1, 5, 25);
+    RegisterRun(19888, 1, 5, 20);
+    RegisterRun(19889, 1, 5, 15);
+    RegisterRun(19890, 1, 5, 12.5);
+    RegisterRun(19891, 1, 5, 10);
+    RegisterRun(19892, 1, 5, 7.5);
+    RegisterRun(19893, 1, 5, 5);
+    RegisterRun(19894, 1, 5, 2.5);
+    RegisterRun(19895, 1, 5, 1.25);
+*/
+
+    
+}
+
+//private:
+public:
+  // -------------
+  // private class
+  // -------------
+  class RunCond {
+  private:
+    int    _bfield;
+    double _momentum;
+    double _dlength;
+    double _anglephi;
+    double _angletheta;
+
+  public:
+    RunCond(int b = 1, double p = 5., double d = 0., double phi = 0.,double theta = 0.)
+           : _bfield(b), _momentum(p), _dlength(d), _anglephi(phi), _angletheta(theta)  {}
+
+    inline int    getBfield  () const { return _bfield;   } // [T]
+    inline double getDlength () const { return _dlength;  } // [cm]
+    inline double getMomentum() const { return _momentum; } // [GeV]
+    inline double getAnglephi() const { return _anglephi; } // [°]
+    inline double getAngletheta() const { return _angletheta; } // [°]
+  };
+
+private:
+  // -------------
+  // Data members
+  // -------------
+  map<int, RunCond>  fRunMap;      // run map
+  static Runinfo    *gInstancePtr; // singleton pointer
 };
 
 Runinfo *Runinfo::gInstancePtr = 0;
