@@ -23,7 +23,8 @@ int eventmon      = 1;
 int reversed      = 0;
 int unpackchannel = 1;
 //int maxevents     = 99999999;
-int maxevents     = 10000;
+//int maxevents     = 10000;
+int maxevents     = 20000;
 int format        = 0;
 
 JPed *jped[MAX_RCU_ID+1] = {0,0,0,0};

@@ -7,7 +7,7 @@ class GEMDisplay;
 //int yokaRawMon(int run = 7049, int part = 0)
 //int yokaRawMon(int run = 17180, int part = 0)
 //int yokaRawMon(int run = 18594, int part = 0)
-int yokaRawMon(int run = 18561, int part = 0)
+int yokaRawMon(int run = 19667, int part = 0)
 {
 #ifdef __CINT__
   gSystem->Load("libPhysics.so");

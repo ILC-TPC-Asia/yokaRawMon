@@ -5,7 +5,7 @@ const int kMaxWidth  = 50;
 const int kMinWidth  =  7;
 const int kThreshold = 10;
 
-void read(const Char_t *fname = "root/readout-6788_0.root")
+void read(const Char_t *fname = "root/readout-19673_0.root")
 {
   gSystem->Load("libPhysics");
   gSystem->Load("libJREvent");

@@ -1,6 +1,6 @@
 #define CHECK_DIST
 #include <iomanip>
-#include "../Runinfo.h"
+#include "../Runinfo.h+"
 
 void GMResol2(Int_t b = 1, Int_t layer = 48, Double_t p = 5.0)
 {
@@ -36,16 +36,17 @@ void GMResol2(Int_t b = 1, Int_t layer = 48, Double_t p = 5.0)
   Int_t kRun[2][kNp] = {{  6953,  6953,  6957,  6958,  6972,  6973,  6974,  6975,  6976,  6977,  6977},  // B=0T
                         { 17319, 17367, 17324, 17364, 17327, 17359, 17331, 17356, 17340, 17352, 17344}}; // B=1T
 #else
-  const Int_t kNp = 10;
+  const Int_t kNp = 12;
   Double_t xdata[2][kNp], ydata[2][kNp], dxdata[2][kNp], dydata[2][kNp];
   //           dlen [cm]      5     10     15     20     25     30     35     40     45     50
-  Int_t kRun[2][kNp] = {{  6953,  6953,  6957,  6958,  6972,  6973,  6974,  6975,  6976,  6977},  // B=0T
-                        { 17319, 17367, 17324, 17364, 17327, 17359, 17331, 17356, 17340, 17352}}; // B=1T
+  Int_t kRun[2][kNp] = {{  6953,  6953,  6957,  6958,  6972,  6973,  6974,  6975,  6976,  6977, 1111, 1112},  // B=0T
+                       // { 17319, 17367, 17324, 17364, 17327, 17359, 17331, 17356, 17340, 17352}}; // B=1T
+                        { 19782, 19783, 19784, 19786, 19787, 19788, 19789, 19790, 19791, 19792, 19793, 19794}}; // B=1T
 #endif
 #endif
 
 #if 0
-  const Char_t *kInOut[2] = { "in", "out" };
+  const Char_t *2] = { "in", "out" };
 #else
   const Char_t *kInOut[2] = { "in", "ot" };
 #endif
@@ -122,9 +123,9 @@ void GMResol2(Int_t b = 1, Int_t layer = 48, Double_t p = 5.0)
   fitfun->SetTextAlign(12);
   fitfun->DrawLatex(100,4*ymax/5, "#sigma_{x}^{2} = #sigma_{0}^{2}+(C_{D}^{2}/N_{eff}) z");
 
-  // save plot as eps file
+  // save plot as pdf file
   stringstream ofile;
-  ofile << "GMResol_Row" << layer << "_B" << b << "T" << ".eps"<< ends; 
+  ofile << "GMResol_Row" << layer << "_B" << b << "T" << ".pdf"<< ends; 
   c1->Print(ofile.str().data());
 }
 

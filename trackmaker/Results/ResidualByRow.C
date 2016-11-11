@@ -2,15 +2,17 @@
 #include <iomanip>
 #include "../Runinfo.h"
 
-  const Int_t kNdl = 10;
+  const Int_t kNdl = 13;
   //const Int_t kNdl = 11;
   //           dlen [cm]      5     10     15     20     25     30     35     40     45     50
-  Int_t kRun[2][kNdl] = {{  6953,  6953,  6957,  6958,  6972,  6973,  6974,  6975,  6976,  6977},  // B=0T
+  Int_t kRun[2][kNdl] = {{  6953,  6953,  6957,  6958,  6972,  6973,  6974,  6975,  6976,  6977,1111,1112,1113},  // B=0T
 //                        { 17319, 17367, 17324, 17364, 17327, 17359, 17331, 17356, 17340, 17352}}; // B=1T
 //                        { 18241, 18238, 18218, 18221, 18224, 18226, 18228, 18230, 18233, 18243}}; // B=1T
 //                        { 18412, 18413, 18414, 18415, 18417, 18418, 18419, 18420, 18421, 18423, 18424}}; // B=1T
-                        { 18564, 18563, 18562, 18561, 18552, 18551, 18550, 18549, 18548, 18547}}; // B=1T
+                        //{ 18564, 18563, 18562, 18561, 18552, 18551, 18550, 18549, 18548, 18547}}; // B=1T
 //                        { 18609, 18606, 18605, 18601, 18600, 18598, 18597, 18595, 18594, 18592, 18591}}; // B=1T
+                        //{ 19678, 19677, 19676, 19675, 19674, 19673, 19672, 19671, 19670, 19669, 19668, 19667}}; // B=1T
+{20034}}; // B=1T
 
 void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Double_t &dy, Double_t p);
 
@@ -31,7 +33,7 @@ void ResidualByRow(Int_t idl = 0, Int_t b= 1, Double_t p = 5.0)
   gStyle->SetTitleFont(22, "Y");
   gStyle->SetTitleFont(22, "");
 
-  const Int_t kNp = 84;
+  const Int_t kNp = 56;
   Double_t xdata[kNp], ydata[kNp], dxdata[kNp], dydata[kNp];
 
   Double_t x, y, dx, dy;
@@ -67,15 +69,15 @@ void ResidualByRow(Int_t idl = 0, Int_t b= 1, Double_t p = 5.0)
   c1->cd();
 
   TGraphErrors *grp = new TGraphErrors(n,xdata,ydata,dxdata,dydata);
-  grp->GetHistogram()->GetXaxis()->SetLimits(0.,84.);
+  grp->GetHistogram()->GetXaxis()->SetLimits(0.,56.);
   grp->GetHistogram()->GetXaxis()->SetTitle("Layer Serial No.");
   grp->GetHistogram()->GetYaxis()->SetTitle("#Delta x [mm]");
   grp->Draw("ap");
   grp->SetMarkerColor(1);
   grp->SetMarkerStyle(21);
 #if 1
-  Double_t ymin = -3.0;
-  Double_t ymax = +3.0;
+  Double_t ymin = -0.5;
+  Double_t ymax = +0.5;
 #else
   Double_t ymin = -0.02;
   Double_t ymax = +0.02;
@@ -86,7 +88,7 @@ void ResidualByRow(Int_t idl = 0, Int_t b= 1, Double_t p = 5.0)
   TPaveText *pt = new TPaveText(330,4*ymax/5, 530.,(4.9*ymax)/5);
 
   stringstream titlestr;
-  titlestr << "Residual (Drift Length " << rinfo.GetDlength(kRun[b][idl]) << "[cm])" << ends;
+  titlestr << "Residual by Row(Drift Length " << rinfo.GetDlength(kRun[b][idl]) << "[cm])" << ends;
   grp->SetTitle(titlestr.str().data());
   pt->SetTextFont(132);
   pt->SetTextAlign(12);
@@ -160,8 +162,8 @@ void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Dou
   //const Int_t    kNdfCut    =  100;
   const Int_t    kNdfCut    =  30;
   const Double_t kChi2Cut   = 10000.;
-  const Double_t kCpaMinCut = -4.;
-  const Double_t kCpaMaxCut =  4.;
+  const Double_t kCpaMinCut = -0.5.;
+  const Double_t kCpaMaxCut =  1.;
   //const Double_t kPhi0MinCut = 6.22;
   //const Double_t kPhi0MaxCut = 6.28;
   const Double_t kPhi0MinCut = 6.00;

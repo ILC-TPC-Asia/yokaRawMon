@@ -150,10 +150,18 @@ TVector2 JPadGeom::GetLocalPosition(int layer, int pad)
 
   int iseg = layer < fgNrow/2 ? 0 : 1;
   if( pad >= GetNpads(iseg) || layer >= fgNrow) {
-    cerr << ":::: ERROR: JPadGeom::GetPosition :::::::::::::::::::::" << endl
+#if 0
+	  cerr << ":::: ERROR: JPadGeom::GetPosition :::::::::::::::::::::" << endl
          << " Bad pad address: layer = " << layer << " pad = " << pad << endl
          << " Abort!"                                                 << endl;
     ::abort();
+#else 
+	  cerr << ":::: ERROR: JPadGeom::GetPosition :::::::::::::::::::::" << endl
+         << " Bad pad address: layer = " << layer << " pad = " << pad << endl
+         << endl;
+    return TVector2(9999999.,9999999.);
+
+#endif
   }
 
   double r      = fgRmin + fgDr*(layer+0.5) - 0.5*fgGap;

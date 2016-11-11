@@ -90,8 +90,8 @@ void TrackMonitor3D(Int_t event = 1, Int_t run = 68, Int_t part = 0, Bool_t rese
 #if 0
   vwp->SetView(190.,80.,80.,ierr); // 3D view
 #else
-  // vwp->SetView(0.,0.,0.,ierr); // Top view
-  vwp->SetView(0.,90.,0.,ierr); // Side view
+   vwp->SetView(0.,0.,0.,ierr); // Top view
+  //vwp->SetView(0.,90.,0.,ierr); // Side view
 #endif
   //--
   // Create a crude LP1 model
@@ -145,8 +145,10 @@ void TrackMonitor3D(Int_t event = 1, Int_t run = 68, Int_t part = 0, Bool_t rese
                                       rotname.data());
 #ifdef SEP_2010
       if (module != 0 && module != 3 && module != 5) { // active modules are 0, 3, and 5 now.
-#else
-      if (module != 1 && module != 3 && module != 6) { // active modules are 1, 3, and 6 now.
+//#else 
+  //    if (module != 1 && module != 3 && module != 6) { // active modules are 1, 3, and 6 now.
+#else 
+      if (module != 0 && module != 3) { // active modules are 0 and 3 now.
 #endif
         gMnNodePtr[module]->SetLineStyle(2); // dummy module with dashed lines
       }

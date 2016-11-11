@@ -4,9 +4,16 @@
 
 void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Double_t &dy, const Char_t *inout, Double_t p);
 
-void GMResol(Int_t b = 1, Int_t layer = 17, Double_t p = 5.0)
+void GMResol_loop()
 //void GMResol(Int_t b = 0, Int_t layer = 14, Double_t p = 5.0)
 {
+
+ Int_t b = 1;
+ Double_t p = 5.0;
+
+for(int i=0;i<=56;i++){ 
+	Int_t layer = i;
+
 //--Set Style
   // Axis
   gStyle->SetLabelFont(22,"X");
@@ -52,14 +59,14 @@ void GMResol(Int_t b = 1, Int_t layer = 17, Double_t p = 5.0)
                         { 18564, 18563, 18562, 18561, 18552, 18551, 18550, 18549, 18548, 18547}}; // B=1T
 //                        { 18609, 18606, 18605, 18601, 18600, 18598, 18597, 18595, 18594, 18592, 18591}}; // B=1T
 #else
-  const Int_t kNp = 12;
+  const Int_t kNp = 13;
   Double_t xdata[2][kNp], ydata[2][kNp], dxdata[2][kNp], dydata[2][kNp];
   //           dlen [cm]      5     10     15     20     25     30     35     40     45     50
   Int_t kRun[2][kNp] = {{  19616,  19611,  6957,  6958,  6972,  6973,  6974,  6975,  6976,  6977, 1111, 1112},  // B=0T
   //Int_t kRun[2][kNp] = {{  19616,  19611},  // B=0T
                        // { 19648, 19647, 19646, 19645, 19644, 19638, 19639, 19640, 19654, 19653, 19655}}; // B=1T
                       //  { 19648, 19647, 19646, 19645, 19644, 19638, 19639, 19640, 19654, 19653, 19655, 19656, 19657}}; // B=1T
-                        { 19782, 19783, 19784, 19786, 19787, 19788, 19789, 19790, 19791, 19792, 19793, 19794}}; // B=1T
+                        { 19678, 19677, 19676, 19675, 19674, 19673, 19672, 19671, 19670, 19669, 19668, 19667}}; // B=1T
 
 
 #endif
@@ -108,7 +115,7 @@ void GMResol(Int_t b = 1, Int_t layer = 17, Double_t p = 5.0)
   grp->SetMarkerColor(1);
   grp->SetMarkerStyle(21);
   double ymin = 0.0;
-  double ymax = 1.0;
+  double ymax = 0.4;
   //double ymax = 0.3;
   grp->SetMinimum(ymin);
   grp->SetMaximum(ymax);
@@ -154,15 +161,14 @@ void GMResol(Int_t b = 1, Int_t layer = 17, Double_t p = 5.0)
   fitfun->SetTextFont(132);
   fitfun->SetTextAlign(12);
   fitfun->DrawLatex(100,4*ymax/5, "#sigma_{x} = #sqrt{#sigma_{0}^{2}+(C_{D}^{2}/N_{eff}) z}");
-  
-  //save as pdf
+
 #if 0
-  Runinfo &rinfo = *Runinfo::GetInstancePtr();
+  // save plot as eps file
   stringstream ofile;
-  ofile << "image/GMResol_Row." << layer << "_B." << rinfo.GetBfield(run) << "_Z." << rinfo.GetDlength(run) << "_P." << rinfo.GetMomentum(run)  << "_φ." << rinfo.GetAnglephi(run) << "_θ." << rinfo.GetAngletheta(run) << ".pdf" << ends;
+  ofile << "GMResol_Row" << layer << "_B" << b << "T" << ".eps"<< ends; 
   c1->Print(ofile.str().data());
 #endif
-  }
+}
 
 void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Double_t &dy, const Char_t *inout, Double_t p)
 {
@@ -182,8 +188,7 @@ void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Dou
   // Open input file
   // ---------------
   stringstream finstr;
-  //finstr << "10k/p." << p << "_z." << rinfo.GetDlength(run) << "_B." << rinfo.GetBfield(run) << ".root" << ends;
-  finstr << "10k/run." << run << "_B." << rinfo.GetBfield(run) << "_z." << rinfo.GetDlength(run) << "_p." << rinfo.GetMomentum(run) << "_φ." << rinfo.GetAnglephi(run) << "_θ." << rinfo.GetAngletheta(run) << ".root" << ends;
+  finstr << "10k/p." << p << "_z." << rinfo.GetDlength(run) << "_B." << rinfo.GetBfield(run) << ".root" << ends;
   cerr << "opening " << finstr.str().data() << endl;
   TFile *hfp = new TFile(finstr.str().data());
 
@@ -270,8 +275,7 @@ void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Dou
   const Double_t kPkPhMinCut =  10.;
   const Double_t kPkPhMaxCut =  900.;
 #else
-  const Int_t    kNdfCut    = 5; //117;
-  //const Int_t    kNdfCut    = 10; //117;
+  const Int_t    kNdfCut    = 80; //117;
   //const Int_t    kNdfCut    = 34; //117;
   const Double_t kChi2Cut   = 40000.;
   //const Double_t kCpaMinCut = -0.2;
@@ -279,8 +283,8 @@ void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Dou
   //const Double_t kCpaMinCut =  -1.5; //-0.2;
   //const Double_t kCpaMaxCut =   2.5; // 0.8;
   //const Double_t kCpaMinCut =  -2;
-  const Double_t kCpaMinCut =  -8;
-  const Double_t kCpaMaxCut =   2;
+  const Double_t kCpaMinCut =  -0.5;
+  const Double_t kCpaMaxCut =   1;
   //const Double_t kCpaMaxCut =   8;
   const Double_t kPhi0MinCut = -99999; // 6.24; //+6.218;
   const Double_t kPhi0MaxCut = +99999; // 6.27; // 6.314;
@@ -328,8 +332,7 @@ void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Dou
   Double_t sg  = htemp->GetFunction("gaus")->GetParameter(2);
   htemp->Fit("gaus","RI","",mu-2.5*sg,mu+2.5*sg);
 
-//  x  = rinfo.GetDlength(run) + rinfo.GetDLOffset(run);
-  x  = rinfo.GetDlength(run);
+  x  = rinfo.GetDlength(run) + rinfo.GetDLOffset(run);
   y  = htemp->GetFunction("gaus")->GetParameter(2); // sigma
   dx = 0;
   dy = htemp->GetFunction("gaus")->GetParError(2);  // its error
@@ -345,8 +348,5 @@ void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Dou
   htemp->SetLineColor(2);
   htemp->Draw("pe");
 #endif
-
-
-
-
+}
 }

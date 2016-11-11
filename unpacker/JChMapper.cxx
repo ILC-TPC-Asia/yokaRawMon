@@ -84,7 +84,13 @@ int JChMapper::GetLayer(int fec, int ch, int rcu)
 int JChMapper::GetPad(int fec, int ch, int rcu)
 {
   int ach = 128*fec + ch;
-
+#if 1
+  if ((rcu != 1 && rcu !=2) || (ach < 0 || ach > 3967)) {
+	  cerr << "ERRER ::::::::::::::::::::::::::::::" << endl
+	       << "RCU=" << rcu << " FEC=" << fec <<" Ch=" << ch << endl;
+#endif
+  
+  }
   return fPad[rcu][ach];
 }
 
