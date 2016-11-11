@@ -124,8 +124,10 @@ void GMResol2(Int_t b = 1, Int_t layer = 48, Double_t p = 5.0)
   fitfun->DrawLatex(100,4*ymax/5, "#sigma_{x}^{2} = #sigma_{0}^{2}+(C_{D}^{2}/N_{eff}) z");
 
   // save plot as pdf file
+  Runinfo &rinfo = *Runinfo::GetInstancePtr();
   stringstream ofile;
-  ofile << "GMResol_Row" << layer << "_B" << b << "T" << ".pdf"<< ends; 
+  //ofile << "GMResol_Row" << layer << "_B" << b << "T" << ".pdf"<< ends; 
+  ofile << "image/GMResol_Row." << layer << "_B." << b << "_Z." << rinfo.GetDlength(run) << "_P." << rinfo.GetMomentum(run)  << "_φ." << rinfo.GetAnglephi(run) << "_θ." << rinfo.GetAngletheta(run) << ".pdf" << ends;
   c1->Print(ofile.str().data());
 }
 
@@ -147,7 +149,8 @@ void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Dou
   // Open input file
   // ---------------
   stringstream finstr;
-  finstr << "10k/p." << p << "_z." << rinfo.GetDlength(run) << "_B." << rinfo.GetBfield(run) << ".root" << ends;
+  //finstr << "10k/p." << p << "_z." << rinfo.GetDlength(run) << "_B." << rinfo.GetBfield(run) << ".root" << ends;
+  finstr << "10k/run." << run << "_B." << rinfo.GetBfield(run) << "_z." << rinfo.GetDlength(run) << "_p." << rinfo.GetMomentum(run) << "_φ." << rinfo.GetAnglephi(run) << "_θ." << rinfo.GetAngletheta(run) << ".root" << ends;
   cerr << "opening " << finstr.str().data() << endl;
   TFile *hfp = new TFile(finstr.str().data());
 

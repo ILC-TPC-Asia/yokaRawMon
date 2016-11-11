@@ -4,9 +4,17 @@
 
 void Process(Int_t run, Int_t layer, Double_t &x, Double_t &y, Double_t &dx, Double_t &dy, const Char_t *inout, Double_t p);
 
-void GMResol(Int_t b = 1, Int_t layer = 17, Double_t p = 5.0)
+void GMResol()
 //void GMResol(Int_t b = 0, Int_t layer = 14, Double_t p = 5.0)
 {
+  Runinfo &rinfo = *Runinfo::GetInstancePtr();
+        Int_t b = 1;
+	Int_t run;
+	Int_t layer = 17;
+	Double_t p = rinfo.GetMomentum(run);
+	Double_t phi = rinfo.GetAnglephi(run);
+	Double_t theta = rinfo.GetAngletheta(run);
+
 //--Set Style
   // Axis
   gStyle->SetLabelFont(22,"X");
@@ -72,6 +80,7 @@ void GMResol(Int_t b = 1, Int_t layer = 17, Double_t p = 5.0)
   const Char_t *kInOut[2] = { "in", "ot" };
 #endif
 
+  
   // ---------------
   // Loop over runs
   // ---------------
@@ -83,6 +92,7 @@ void GMResol(Int_t b = 1, Int_t layer = 17, Double_t p = 5.0)
     //for (Int_t i=0; i<2; i++) {
       Process(kRun[b][i], layer, x, y, dx, dy, kInOut[io], p);
       xdata[io][n] = x; ydata[io][n] = y; dxdata[io][n] = dx; dydata[io][n] = dy; n++; 
+
     }
   }
 
@@ -156,10 +166,10 @@ void GMResol(Int_t b = 1, Int_t layer = 17, Double_t p = 5.0)
   fitfun->DrawLatex(100,4*ymax/5, "#sigma_{x} = #sqrt{#sigma_{0}^{2}+(C_{D}^{2}/N_{eff}) z}");
   
   //save as pdf
-#if 0
+#if 1
   Runinfo &rinfo = *Runinfo::GetInstancePtr();
   stringstream ofile;
-  ofile << "image/GMResol_Row." << layer << "_B." << rinfo.GetBfield(run) << "_Z." << rinfo.GetDlength(run) << "_P." << rinfo.GetMomentum(run)  << "_φ." << rinfo.GetAnglephi(run) << "_θ." << rinfo.GetAngletheta(run) << ".pdf" << ends;
+  ofile << "image/GMResol_Row." << layer << "_B." << b << "_P." << p << "_φ." << "0" << "_θ." << "20" << ".pdf" << ends;
   c1->Print(ofile.str().data());
 #endif
   }
