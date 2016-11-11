@@ -8,6 +8,9 @@
 -------------------------------------------------------------------------------
 GitHub Setup
 -------------------------------------------------------------------------------
+you can use 2 way. 1->Using terminal 2->Using GitHub Desktop
+
+  1.Using terminal
      -------------------------------------------------------------------------------
      1) Setup local repository 
      -------------------------------------------------------------------------------
@@ -36,14 +39,17 @@ GitHub Setup
      -------------------------------------------------------------------------------
      Find more details on Git in other references.
 
-   Tips)Using "GitHub Desktop" ::To using this, you can operate easily
-     After you set up GitHub,
+   2.Using GitHub Desktop
+     -------------------------------------------------------------------------------
+     1) Setup local repository 
+     -------------------------------------------------------------------------------
      1)Downroad GitHub Desktop
         From here -> https://desktop.github.com
      2)Push "+" on left upper side
-     3)Push "Add" and then select Local Path = "your yokaRawMonNeo directory"
-     You can commit, upload, create files on this.
-     On the internet, there is more infomation. 
+     3)Push "Clone" and then push "ILC-TPC-Asia/yokaRawMonNeo"
+     4)
+
+
 
 
 -------------------------------------------------------------------------------
