@@ -323,8 +323,8 @@ private:
 
     kDlength[20034] = 2.5;    
 
-    kDlength[20042] = 1.25;    
-    kDlength[20041] = 2.5;    
+    kDlength[20042] = 2.5;    
+    kDlength[20041] = 1.25;    
     kDlength[20043] = 5;    
     kDlength[20044] = 7.5;    
     kDlength[20045] = 10;    
