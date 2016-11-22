@@ -34,6 +34,18 @@ public:
     else                                    return fRunMap[run].getMomentum();
   }
 
+  inline double GetAnglephi(int run)
+  {
+    if (fRunMap.find(run) == fRunMap.end()) return 1.e10;
+    else                                    return fRunMap[run].getAnglephi();
+  }
+  
+  inline double GetAngletheta(int run)
+  {
+    if (fRunMap.find(run) == fRunMap.end()) return 1.e10;
+    else                                    return fRunMap[run].getAngletheta();
+  }
+
   // ---------
   // Utility
   // ---------
@@ -54,7 +66,7 @@ private:
     // 2008 data
     //--
     //(Run#)
-    RegisterRun(6953, 0, 5, 10);
+/*    RegisterRun(6953, 0, 5, 10);
     RegisterRun(6957, 0, 5, 15);
     RegisterRun(6958, 0, 5, 20);
     RegisterRun(6972, 0, 5, 25);
@@ -310,24 +322,25 @@ private:
     RegisterRun(18742, 1, 5, 30);
     RegisterRun(18743, 1, 5, 40);
     RegisterRun(18744, 1, 5, 50);
-
+*/
     //-------------
     //2016 data
     //-------------
-    RegisterRun(19782, 1, 5, 2.5);
-    RegisterRun(19783, 1, 5, 5);
-    RegisterRun(19784, 1, 5, 10);
-    RegisterRun(19786, 1, 5, 15);
-    RegisterRun(19787, 1, 5, 20);
-    RegisterRun(19788, 1, 5, 25);
-    RegisterRun(19789, 1, 5, 30);
-    RegisterRun(19790, 1, 5, 35);
-    RegisterRun(19791, 1, 5, 40);
-    RegisterRun(19792, 1, 5, 45);
-    RegisterRun(19793, 1, 5, 50);
-    RegisterRun(19794, 1, 5, 55);
 
+    RegisterRun(19782, 1, 5, 2.5, 0, 20);
+    RegisterRun(19783, 1, 5, 5, 0, 20);
+    RegisterRun(19784, 1, 5, 10, 0, 20);
+    RegisterRun(19786, 1, 5, 15, 0, 20);
+    RegisterRun(19787, 1, 5, 20, 0, 20);
+    RegisterRun(19788, 1, 5, 25, 0, 20);
+    RegisterRun(19789, 1, 5, 30, 0, 20);
+    RegisterRun(19790, 1, 5, 35, 0, 20);
+    RegisterRun(19791, 1, 5, 40, 0, 20);
+    RegisterRun(19792, 1, 5, 45, 0, 20);
+    RegisterRun(19793, 1, 5, 50, 0, 20);
+    RegisterRun(19794, 1, 5, 55, 0, 20);
 
+/*
     RegisterRun(19881, 1, 5, 55);
     RegisterRun(19882, 1, 5, 50);
     RegisterRun(19883, 1, 5, 45);
@@ -343,7 +356,7 @@ private:
     RegisterRun(19893, 1, 5, 5);
     RegisterRun(19894, 1, 5, 2.5);
     RegisterRun(19895, 1, 5, 1.25);
-
+*/
 
     
 }
@@ -362,12 +375,14 @@ public:
     double _angletheta;
 
   public:
-    RunCond(int b = 1, double p = 5., double d = 0.)
-           : _bfield(b), _momentum(p), _dlength(d)  {}
+    RunCond(int b = 1, double p = 5., double d = 0., double phi = 0.,double theta = 0.)
+           : _bfield(b), _momentum(p), _dlength(d), _anglephi(phi), _angletheta(theta)  {}
 
     inline int    getBfield  () const { return _bfield;   } // [T]
     inline double getDlength () const { return _dlength;  } // [cm]
     inline double getMomentum() const { return _momentum; } // [GeV]
+    inline double getAnglephi() const { return _anglephi; } // [°]
+    inline double getAngletheta() const { return _angletheta; } // [°]
   };
 
 private:
